@@ -1,0 +1,5 @@
+name: Custom alters
+description: Replace core or contrib services and plugins with custom.
+type: module
+package: Custom
+core: 8.x
