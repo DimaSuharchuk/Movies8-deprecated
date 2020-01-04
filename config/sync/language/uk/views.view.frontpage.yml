@@ -1,0 +1,31 @@
+label: 'Головна сторінка'
+description: 'Всі матеріали винесені на головну сторінку.'
+display:
+  default:
+    display_options:
+      empty:
+        title:
+          title: 'Ласкаво просимо на сайт [site:name]'
+      exposed_form:
+        options:
+          submit_button: Застосувати
+          reset_button_label: Скинути
+          exposed_sorts_label: 'Впорядкувати за'
+          sort_asc_label: Зрост
+          sort_desc_label: Спад
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Елементів на сторінку'
+            items_per_page_options_all_label: '- Усе -'
+            offset_label: Зміщення
+          tags:
+            previous: '‹ Попередня'
+            next: 'Наступна ›'
+            first: '« Перша'
+            last: 'Остання »'
+    display_title: Головне
+  feed_1:
+    display_title: Потік
+  page_1:
+    display_title: Сторінка
