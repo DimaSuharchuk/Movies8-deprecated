@@ -1,0 +1,34 @@
+uuid: 4dad59ef-f584-4c11-8789-17363a4ccd5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cast_person.field_character
+    - field.field.paragraph.cast_person.field_person
+    - paragraphs.paragraphs_type.cast_person
+id: paragraph.cast_person.default
+targetEntityType: paragraph
+bundle: cast_person
+mode: default
+content:
+  field_character:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_person:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

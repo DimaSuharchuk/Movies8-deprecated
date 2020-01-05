@@ -1,0 +1,11 @@
+uuid: 197a8666-c482-469e-af7d-9a06603b8072
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.profile
+id: media.profile
+target_entity_type_id: media
+target_bundle: profile
+default_langcode: en
+language_alterable: false

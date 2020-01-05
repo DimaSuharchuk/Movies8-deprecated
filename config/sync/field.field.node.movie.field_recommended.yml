@@ -11,7 +11,7 @@ entity_type: node
 bundle: movie
 label: Recommended
 description: ''
-required: true
+required: false
 translatable: false
 default_value:
   -

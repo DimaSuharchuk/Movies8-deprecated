@@ -1,0 +1,39 @@
+uuid: dce63e0e-ef16-43ce-bbfe-4cce7593fe56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.crew_person.field_department
+    - field.field.paragraph.crew_person.field_job
+    - field.field.paragraph.crew_person.field_person
+    - paragraphs.paragraphs_type.crew_person
+id: paragraph.crew_person.default
+targetEntityType: paragraph
+bundle: crew_person
+mode: default
+content:
+  field_department:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_job:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_person:
+    weight: 2
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

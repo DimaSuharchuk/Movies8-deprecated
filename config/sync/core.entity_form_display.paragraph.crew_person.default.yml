@@ -1,0 +1,43 @@
+uuid: acc56905-62fc-414c-a5cb-89a82c463143
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.crew_person.field_department
+    - field.field.paragraph.crew_person.field_job
+    - field.field.paragraph.crew_person.field_person
+    - paragraphs.paragraphs_type.crew_person
+id: paragraph.crew_person.default
+targetEntityType: paragraph
+bundle: crew_person
+mode: default
+content:
+  field_department:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_job:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_person:
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

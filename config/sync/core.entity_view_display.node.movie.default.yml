@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.movie.field_backdrop
+    - field.field.node.movie.field_cast
     - field.field.node.movie.field_collection
+    - field.field.node.movie.field_crew
     - field.field.node.movie.field_genres
     - field.field.node.movie.field_imdb_id
     - field.field.node.movie.field_imdb_rating
@@ -22,6 +24,7 @@ dependencies:
     - node.type.movie
   module:
     - datetime
+    - entity_reference_revisions
     - user
 id: node.movie.default
 targetEntityType: node
@@ -37,6 +40,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
+  field_cast:
+    type: entity_reference_revisions_entity_view
+    weight: 118
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
   field_collection:
     weight: 103
     label: above
@@ -44,6 +56,15 @@ content:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
+    region: content
+  field_crew:
+    type: entity_reference_revisions_entity_view
+    weight: 119
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
     region: content
   field_genres:
     weight: 104

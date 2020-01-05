@@ -1,0 +1,40 @@
+uuid: 1bd5805f-5c66-444b-abb6-8f31306284a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cast
+    - node.type.movie
+    - paragraphs.paragraphs_type.cast_person
+  module:
+    - entity_reference_revisions
+id: node.movie.field_cast
+field_name: field_cast
+entity_type: node
+bundle: movie
+label: Cast
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cast_person: cast_person
+    target_bundles_drag_drop:
+      cast:
+        weight: 5
+        enabled: false
+      cast_person:
+        enabled: true
+        weight: 6
+      crew:
+        weight: 7
+        enabled: false
+      crew_person:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

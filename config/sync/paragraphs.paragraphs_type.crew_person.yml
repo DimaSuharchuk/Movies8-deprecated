@@ -1,0 +1,9 @@
+uuid: 433d3e50-a59a-42cc-9629-3b3074783168
+langcode: en
+status: true
+dependencies: {  }
+id: crew_person
+label: 'Crew person'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

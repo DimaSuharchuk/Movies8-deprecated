@@ -1,0 +1,23 @@
+uuid: d567d265-d298-4cb9-aebd-257dcca039d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_tmdb_id
+    - taxonomy.vocabulary.person
+id: taxonomy_term.person.field_tmdb_id
+field_name: field_tmdb_id
+entity_type: taxonomy_term
+bundle: person
+label: 'TMDb ID'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,30 @@
+uuid: 795de0da-ce13-403d-8dba-5d7b9e424a6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.profile.field_media_image
+    - image.style.large
+    - media.type.profile
+  module:
+    - image
+id: media.profile.default
+targetEntityType: media
+bundle: profile
+mode: default
+content:
+  field_media_image:
+    label: visually_hidden
+    weight: 0
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

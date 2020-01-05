@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - field.field.node.movie.field_backdrop
+    - field.field.node.movie.field_cast
     - field.field.node.movie.field_collection
+    - field.field.node.movie.field_crew
     - field.field.node.movie.field_genres
     - field.field.node.movie.field_imdb_id
     - field.field.node.movie.field_imdb_rating
@@ -23,6 +25,7 @@ dependencies:
   module:
     - datetime
     - media_library
+    - paragraphs
 id: node.movie.default
 targetEntityType: node
 bundle: movie
@@ -41,6 +44,18 @@ content:
     third_party_settings: {  }
     type: media_library_widget
     region: content
+  field_cast:
+    type: entity_reference_paragraphs
+    weight: 138
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
   field_collection:
     weight: 123
     settings:
@@ -50,6 +65,18 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_crew:
+    type: entity_reference_paragraphs
+    weight: 139
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
     region: content
   field_genres:
     weight: 124

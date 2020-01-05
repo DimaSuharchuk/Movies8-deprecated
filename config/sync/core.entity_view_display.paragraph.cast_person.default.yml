@@ -1,0 +1,30 @@
+uuid: 2b389158-9863-4e90-b985-f851e733933b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cast_person.field_character
+    - field.field.paragraph.cast_person.field_person
+    - paragraphs.paragraphs_type.cast_person
+id: paragraph.cast_person.default
+targetEntityType: paragraph
+bundle: cast_person
+mode: default
+content:
+  field_character:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_person:
+    weight: 1
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

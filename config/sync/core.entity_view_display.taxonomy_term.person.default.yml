@@ -1,0 +1,42 @@
+uuid: a3a0efd0-a41c-436d-a88a-1e00c78eba28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.person.field_profile
+    - field.field.taxonomy_term.person.field_tmdb_id
+    - taxonomy.vocabulary.person
+  module:
+    - text
+id: taxonomy_term.person.default
+targetEntityType: taxonomy_term
+bundle: person
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_profile:
+    type: entity_reference_entity_view
+    weight: 2
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_tmdb_id:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  langcode: true
