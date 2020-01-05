@@ -1,0 +1,40 @@
+uuid: c45fcf9b-090c-438a-9cd1-3bc6e86d0360
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.production_company.field_media_image
+    - field.field.media.production_company.field_tmdb_id
+    - image.style.large
+    - media.type.production_company
+  module:
+    - image
+id: media.production_company.default
+targetEntityType: media
+bundle: production_company
+mode: default
+content:
+  field_media_image:
+    label: visually_hidden
+    weight: 0
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_tmdb_id:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

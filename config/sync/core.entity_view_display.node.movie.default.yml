@@ -1,0 +1,176 @@
+uuid: f6865a42-7130-4f87-9cf0-dd898db56c88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.movie.field_backdrop
+    - field.field.node.movie.field_collection
+    - field.field.node.movie.field_genres
+    - field.field.node.movie.field_imdb_id
+    - field.field.node.movie.field_imdb_rating
+    - field.field.node.movie.field_original_title
+    - field.field.node.movie.field_overview
+    - field.field.node.movie.field_poster
+    - field.field.node.movie.field_production_companies
+    - field.field.node.movie.field_recommendations
+    - field.field.node.movie.field_recommended
+    - field.field.node.movie.field_release_date
+    - field.field.node.movie.field_runtime
+    - field.field.node.movie.field_similar
+    - field.field.node.movie.field_tmdb_id
+    - field.field.node.movie.field_trailers
+    - node.type.movie
+  module:
+    - datetime
+    - user
+id: node.movie.default
+targetEntityType: node
+bundle: movie
+mode: default
+content:
+  field_backdrop:
+    weight: 101
+    label: above
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_collection:
+    weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_genres:
+    weight: 104
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_imdb_id:
+    weight: 106
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_imdb_rating:
+    weight: 112
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 1
+      prefix_suffix: false
+    third_party_settings: {  }
+    type: number_decimal
+    region: content
+  field_original_title:
+    weight: 107
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_overview:
+    weight: 108
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_poster:
+    weight: 102
+    label: above
+    settings:
+      link: true
+      view_mode: default
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+  field_production_companies:
+    type: entity_reference_entity_view
+    weight: 109
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_recommendations:
+    weight: 113
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_recommended:
+    weight: 116
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_release_date:
+    weight: 110
+    label: above
+    settings:
+      timezone_override: ''
+      date_format: 'Y'
+    third_party_settings: {  }
+    type: datetime_custom
+    region: content
+  field_runtime:
+    weight: 111
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_similar:
+    weight: 114
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_tmdb_id:
+    weight: 105
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_trailers:
+    type: entity_reference_entity_view
+    weight: 115
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

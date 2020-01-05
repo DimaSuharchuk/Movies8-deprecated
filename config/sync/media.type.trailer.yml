@@ -1,0 +1,16 @@
+uuid: b03d26d9-e502-482d-891b-80afc990d740
+langcode: en
+status: true
+dependencies: {  }
+id: trailer
+label: Trailer
+description: ''
+source: 'oembed:video'
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  thumbnails_directory: 'public://trailers_thumb'
+  providers:
+    - YouTube
+  source_field: field_media_oembed_video
+field_map: {  }

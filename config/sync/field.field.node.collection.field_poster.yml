@@ -1,0 +1,28 @@
+uuid: b113725a-9a03-4a9b-acdd-63d445dba464
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poster
+    - media.type.poster
+    - node.type.collection
+id: node.collection.field_poster
+field_name: field_poster
+entity_type: node
+bundle: collection
+label: Poster
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      poster: poster
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

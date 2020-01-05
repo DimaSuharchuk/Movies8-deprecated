@@ -1,0 +1,11 @@
+uuid: 598569fe-dd80-47e6-818f-21ba36b9abec
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.backdrop
+id: media.backdrop
+target_entity_type_id: media
+target_bundle: backdrop
+default_langcode: en
+language_alterable: false

@@ -1,0 +1,30 @@
+uuid: d9244646-c4ee-42ac-a7b0-fd73a6e49298
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.poster.field_media_image
+    - image.style.thumbnail
+    - media.type.poster
+  module:
+    - image
+id: media.poster.media_library
+targetEntityType: media
+bundle: poster
+mode: media_library
+content:
+  field_media_image:
+    weight: -50
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  status: true
+  uid: true

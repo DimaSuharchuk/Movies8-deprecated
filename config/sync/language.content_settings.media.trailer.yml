@@ -1,0 +1,11 @@
+uuid: 2fd2b01f-3236-42f8-9827-de4b8bb84def
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.trailer
+id: media.trailer
+target_entity_type_id: media
+target_bundle: trailer
+default_langcode: und
+language_alterable: true

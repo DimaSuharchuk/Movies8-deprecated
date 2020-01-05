@@ -1,0 +1,14 @@
+uuid: 7598023a-adfa-4b90-aa4d-aa3b122f554d
+langcode: en
+status: true
+dependencies: {  }
+id: backdrop
+label: Backdrop
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map:
+  name: name

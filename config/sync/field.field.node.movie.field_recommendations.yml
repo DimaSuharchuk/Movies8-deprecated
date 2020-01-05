@@ -1,0 +1,27 @@
+uuid: 04392106-9137-4cc1-a494-5aa4c4bb057c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recommendations
+    - node.type.movie
+id: node.movie.field_recommendations
+field_name: field_recommendations
+entity_type: node
+bundle: movie
+label: Recommendations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      movie: movie
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

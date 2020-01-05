@@ -1,0 +1,53 @@
+uuid: 8e94f4f9-7b84-432e-ba7b-3c8b362e33e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.movie.field_backdrop
+    - field.field.node.movie.field_collection
+    - field.field.node.movie.field_genres
+    - field.field.node.movie.field_imdb_id
+    - field.field.node.movie.field_imdb_rating
+    - field.field.node.movie.field_original_title
+    - field.field.node.movie.field_overview
+    - field.field.node.movie.field_poster
+    - field.field.node.movie.field_production_companies
+    - field.field.node.movie.field_recommendations
+    - field.field.node.movie.field_recommended
+    - field.field.node.movie.field_release_date
+    - field.field.node.movie.field_runtime
+    - field.field.node.movie.field_similar
+    - field.field.node.movie.field_tmdb_id
+    - field.field.node.movie.field_trailers
+    - node.type.movie
+  module:
+    - user
+id: node.movie.teaser
+targetEntityType: node
+bundle: movie
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_backdrop: true
+  field_collection: true
+  field_genres: true
+  field_imdb_id: true
+  field_imdb_rating: true
+  field_original_title: true
+  field_overview: true
+  field_poster: true
+  field_production_companies: true
+  field_recommendations: true
+  field_recommended: true
+  field_release_date: true
+  field_runtime: true
+  field_similar: true
+  field_tmdb_id: true
+  field_trailers: true
+  langcode: true

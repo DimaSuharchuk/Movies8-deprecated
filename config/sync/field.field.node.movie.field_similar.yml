@@ -1,0 +1,27 @@
+uuid: 302b8b36-ab33-45b2-a09e-51ea3b80e5fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_similar
+    - node.type.movie
+id: node.movie.field_similar
+field_name: field_similar
+entity_type: node
+bundle: movie
+label: Similar
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      movie: movie
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,11 @@
+uuid: b07eefa0-2068-45fa-95ba-fb6bd3aeb554
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.production_company
+id: media.production_company
+target_entity_type_id: media
+target_bundle: production_company
+default_langcode: en
+language_alterable: false

@@ -1,0 +1,23 @@
+uuid: 47fdafc1-7f4b-4baa-a227-1725b5f94497
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tmdb_id
+    - node.type.collection
+id: node.collection.field_tmdb_id
+field_name: field_tmdb_id
+entity_type: node
+bundle: collection
+label: 'TMDb ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

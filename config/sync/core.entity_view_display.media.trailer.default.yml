@@ -1,0 +1,29 @@
+uuid: 9e29f6cf-cd89-404d-8db8-199fbaebd27d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.trailer.field_media_oembed_video
+    - media.type.trailer
+  module:
+    - media
+id: media.trailer.default
+targetEntityType: media
+bundle: trailer
+mode: default
+content:
+  field_media_oembed_video:
+    type: oembed
+    label: visually_hidden
+    weight: 0
+    settings:
+      max_width: 0
+      max_height: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,23 @@
+uuid: 47ef45ff-c305-4bcd-8d6b-ba42dad6250c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recommended
+    - node.type.movie
+id: node.movie.field_recommended
+field_name: field_recommended
+entity_type: node
+bundle: movie
+label: Recommended
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

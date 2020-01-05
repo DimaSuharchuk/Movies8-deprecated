@@ -1,0 +1,27 @@
+uuid: 49616d99-62e2-4f0f-945d-08e7114b551d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.trailer.field_media_oembed_video
+    - media.type.trailer
+id: media.trailer.media_library
+targetEntityType: media
+bundle: trailer
+mode: media_library
+content:
+  name:
+    type: string_textfield
+    settings:
+      size: 60
+      placeholder: ''
+    weight: 0
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_media_oembed_video: true
+  langcode: true
+  status: true
+  uid: true

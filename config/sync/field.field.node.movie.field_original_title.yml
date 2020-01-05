@@ -1,0 +1,19 @@
+uuid: b1670d89-a0bb-40e3-a0e0-3d6d744152c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_original_title
+    - node.type.movie
+id: node.movie.field_original_title
+field_name: field_original_title
+entity_type: node
+bundle: movie
+label: 'Original title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

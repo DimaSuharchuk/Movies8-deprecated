@@ -1,0 +1,30 @@
+uuid: b21b9a88-7172-493e-ab1c-b0906662338e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.media.media_library
+    - field.field.media.backdrop.field_media_image
+    - image.style.thumbnail
+    - media.type.backdrop
+  module:
+    - image
+id: media.backdrop.media_library
+targetEntityType: media
+bundle: backdrop
+mode: media_library
+content:
+  field_media_image:
+    weight: 0
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  status: true
+  uid: true

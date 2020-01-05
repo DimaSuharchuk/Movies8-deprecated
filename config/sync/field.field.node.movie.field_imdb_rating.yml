@@ -1,0 +1,23 @@
+uuid: c56b2c79-3b1a-4df7-9b08-7577f09b05a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_imdb_rating
+    - node.type.movie
+id: node.movie.field_imdb_rating
+field_name: field_imdb_rating
+entity_type: node
+bundle: movie
+label: 'IMDb rating'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: !!float 10
+  prefix: ''
+  suffix: ''
+field_type: decimal

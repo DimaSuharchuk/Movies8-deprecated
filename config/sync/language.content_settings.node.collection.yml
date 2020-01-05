@@ -1,0 +1,16 @@
+uuid: 98a44e8f-ef89-4a37-be0b-09d6bc6641c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.collection
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.collection
+target_entity_type_id: node
+target_bundle: collection
+default_langcode: en
+language_alterable: true

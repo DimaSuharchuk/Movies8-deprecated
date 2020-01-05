@@ -1,0 +1,50 @@
+uuid: 27829ddd-8a69-460a-88bb-a0a49705a209
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.collection.field_backdrop
+    - field.field.node.collection.field_poster
+    - field.field.node.collection.field_tmdb_id
+    - node.type.collection
+  module:
+    - user
+id: node.collection.default
+targetEntityType: node
+bundle: collection
+mode: default
+content:
+  field_backdrop:
+    type: entity_reference_entity_view
+    weight: 103
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_poster:
+    type: entity_reference_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_tmdb_id:
+    weight: 101
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true
