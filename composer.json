@@ -15,13 +15,15 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.2",
         "composer/installers": "^1.2",
         "drupal/adminimal_admin_toolbar": "^1.10",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
         "drupal/module_filter": "^3.1",
+        "drupal/paragraphs": "^1.10",
         "drush/drush": "^10.1",
+        "eloquent/enumeration": "^6.0",
         "php-tmdb/api": "^2.1"
     },
     "require-dev": {
