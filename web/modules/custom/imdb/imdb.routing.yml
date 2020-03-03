@@ -1,0 +1,7 @@
+imdb.imdb:
+  path: '/admin/imdb'
+  defaults:
+    _form: '\Drupal\imdb\Form\IMDbIDsAddForm'
+    _title: 'IMDb'
+  requirements:
+    _permission: 'access administration pages'

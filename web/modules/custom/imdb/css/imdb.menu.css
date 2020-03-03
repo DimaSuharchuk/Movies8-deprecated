@@ -1,0 +1,8 @@
+.toolbar-icon-imdb-admin-imdb:before {
+  background-image: url("../icons/acacac/movie.svg");
+}
+.toolbar-icon-imdb-admin-imdb:hover:before,
+.toolbar-icon-imdb-admin-imdb:active:before,
+.toolbar-icon-imdb-admin-imdb.is-active:before {
+  background-image: url("../icons/ffffff/movie.svg");
+}

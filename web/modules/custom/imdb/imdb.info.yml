@@ -1,0 +1,5 @@
+name: IMDB
+description: Provides work with different IMDB APIs.
+type: module
+package: Custom
+core: 8.x

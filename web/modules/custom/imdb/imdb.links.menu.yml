@@ -1,0 +1,6 @@
+imdb.admin_imdb:
+  title: IMDb
+  description: 'IMDb functionality.'
+  parent: system.admin
+  route_name: imdb.imdb
+  weight: 10
