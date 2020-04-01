@@ -4,8 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.collection.field_backdrop
-    - field.field.node.collection.field_poster
     - field.field.node.collection.field_tmdb_id
     - node.type.collection
   module:
@@ -17,11 +15,9 @@ mode: teaser
 content:
   links:
     weight: 100
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
-  field_backdrop: true
-  field_poster: true
   field_tmdb_id: true
   langcode: true
