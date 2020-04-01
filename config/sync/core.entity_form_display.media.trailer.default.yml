@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.trailer.field_media_oembed_video
+    - field.field.media.trailer.field_size
     - media.type.trailer
   module:
     - media
@@ -14,7 +15,7 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -25,6 +26,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+    region: content
+  field_size:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   langcode:
     type: language_select
@@ -37,12 +45,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 100
+    weight: 5
     region: content
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 3
     settings:
       match_operator: CONTAINS
       size: 60

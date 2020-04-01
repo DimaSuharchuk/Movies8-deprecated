@@ -65,4 +65,5 @@ display:
         title: Содержимое
       tab_options:
         title: Содержимое
+        description: 'Поиск материалов и управление ими'
     display_title: Страница

@@ -1,4 +1,4 @@
-label: Медіабібліотека
+label: Медіатека
 description: 'Пошук медіа та керування ними.'
 display:
   default:
@@ -68,6 +68,9 @@ display:
         name:
           separator: ', '
         edit_media:
+          alter:
+            text: 'Редагувати {{ name }}'
+            alt: 'Редагувати {{ name }}'
           text: Редагувати
         delete_media:
           alter:

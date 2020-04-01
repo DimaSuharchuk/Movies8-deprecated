@@ -4,8 +4,10 @@ display:
   default:
     display_options:
       empty:
+        area_text_custom:
+          content: 'Вміст головної сторінки ще не створено.<br />Щоб розпочати створення сайту перегляньте <a target="_blank" href="https://www.drupal.org/docs/user_guide/en/index.html">Посібник користувача</a>.'
         title:
-          title: 'Ласкаво просимо на сайт [site:name]'
+          title: 'Вітаємо на сайті [site:name]'
       exposed_form:
         options:
           submit_button: Застосувати

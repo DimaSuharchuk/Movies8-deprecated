@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.media.trailer.field_media_oembed_video
+    - field.field.media.trailer.field_size
     - media.type.trailer
   module:
     - media
@@ -20,6 +21,15 @@ content:
       max_width: 0
       max_height: 0
     third_party_settings: {  }
+    region: content
+  field_size:
+    weight: 1
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
     region: content
 hidden:
   created: true

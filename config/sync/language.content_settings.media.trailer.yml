@@ -7,5 +7,5 @@ dependencies:
 id: media.trailer
 target_entity_type_id: media
 target_bundle: trailer
-default_langcode: und
-language_alterable: true
+default_langcode: en
+language_alterable: false

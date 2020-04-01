@@ -1,0 +1,23 @@
+uuid: 3ebd11de-991b-40d1-aeed-afbda2bf681d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_size
+    - media.type.trailer
+id: media.trailer.field_size
+field_name: field_size
+entity_type: media
+bundle: trailer
+label: Size
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: p
+field_type: integer

@@ -1,4 +1,5 @@
 label: Медиа-библиотека
+description: 'Найти и управлять медиа.'
 display:
   default:
     display_title: Основной
@@ -48,6 +49,12 @@ display:
         created:
           expose:
             label: 'Новые сначала'
+        name:
+          expose:
+            label: 'Имя (А-Я)'
+        name_1:
+          expose:
+            label: 'Имя (Я-А)'
       title: Мультимедиа
       empty:
         area_text_custom:
@@ -61,8 +68,14 @@ display:
         name:
           separator: ', '
         edit_media:
+          alter:
+            text: 'Редактировать {{ name }}'
+            alt: 'Редактировать {{ name }}'
           text: Редактировать
         delete_media:
+          alter:
+            text: 'Удалить {{ name }}'
+            alt: 'Удалить {{ name }}'
           text: Удалить
   widget:
     display_title: Виджет
@@ -81,6 +94,7 @@ display:
         display_link_table:
           label: Таблица
   widget_table:
+    display_title: 'Виджет (таблица)'
     display_options:
       fields:
         thumbnail__target_id:

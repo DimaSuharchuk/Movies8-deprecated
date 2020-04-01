@@ -24,7 +24,7 @@ content:
     type: image
     region: content
   field_tmdb_id:
-    weight: 1
+    weight: 2
     label: above
     settings:
       thousand_separator: ''
@@ -32,9 +32,16 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
+  name:
+    type: string
+    weight: 1
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
 hidden:
   created: true
   langcode: true
-  name: true
   thumbnail: true
   uid: true
