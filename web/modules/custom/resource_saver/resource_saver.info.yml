@@ -1,0 +1,5 @@
+name: Resource saver
+description: Validate and save data in any entity on site.
+type: module
+package: Custom
+core: 8.x
