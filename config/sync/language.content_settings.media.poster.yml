@@ -8,9 +8,9 @@ dependencies:
     - content_translation
 third_party_settings:
   content_translation:
-    enabled: false
+    enabled: true
 id: media.poster
 target_entity_type_id: media
 target_bundle: poster
 default_langcode: en
-language_alterable: false
+language_alterable: true
