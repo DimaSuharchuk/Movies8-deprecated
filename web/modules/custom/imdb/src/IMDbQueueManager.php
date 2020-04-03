@@ -2,10 +2,10 @@
 
 namespace Drupal\imdb;
 
-use Drupal\Component\Plugin\Factory\DefaultFactory;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
+use Drupal\imdb\Annotation\IMDbQueue;
 use Traversable;
 
 /**
@@ -21,12 +21,11 @@ class IMDbQueueManager extends DefaultPluginManager {
       'Plugin/IMDbQueue',
       $namespaces,
       $module_handler,
-      'Drupal\imdb\IMDbQueuePluginInterface',
-      'Drupal\imdb\Annotation\IMDbQueue'
+      IMDbQueuePluginInterface::class,
+      IMDbQueue::class
     );
 
     $this->setCacheBackend($cache_backend, 'imdb_queue');
-    $this->factory = new DefaultFactory($this->getDiscovery());
   }
 
 }

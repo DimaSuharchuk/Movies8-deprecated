@@ -8,18 +8,14 @@ interface IMDbQueuePluginInterface extends PluginInspectionInterface {
 
   const MAX_EXECUTION_TIME = 5;
 
-//  public function getLimits(): array;
-//
   public function numberOfItems(): int;
-//
-  public function createItem(IMDbQueueItem $data);
-//
-//  public function claimItem(): object;
-//
-//  public function deleteItem($queueItem): void;
-//
-//  public function isAvailable(): bool;
+
+  public function isEmpty(): bool;
+
+  public function createItem(IMDbQueueItem $data): void;
 
   public function getResults(): array;
+
+  public function clearQueue(): void;
 
 }

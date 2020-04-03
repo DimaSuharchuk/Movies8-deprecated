@@ -47,15 +47,11 @@ abstract class IMDbQueuePluginBase extends PluginBase implements IMDbQueuePlugin
     $this->refreshAvailability();
   }
 
-  /**
-   * @param \Drupal\imdb\IMDbQueueItem $itemData
-   *
-   * @return \Drupal\imdb\IMDbQueueItem
-   * @throws \Exception
-   */
-  abstract protected function prepareItem(IMDbQueueItem $itemData): IMDbQueueItem;
-
   abstract protected function refreshAvailability(): void;
+
+  public function isEmpty(): bool {
+    return !$this->numberOfItems();
+  }
 
   public function numberOfItems(): int {
     return $this->queue->numberOfItems();
@@ -70,10 +66,10 @@ abstract class IMDbQueuePluginBase extends PluginBase implements IMDbQueuePlugin
 
     $results = [];
     while (
+      $this->isAvailable()
+      &&
       Drupal::time()
         ->getCurrentTime() - $start < IMDbQueuePluginInterface::MAX_EXECUTION_TIME
-      &&
-      $this->isAvailable()
     ) {
       if ($item = $this->claimItem()) {
         /** @var \Drupal\imdb\IMDbQueueItem $queueItem */
@@ -98,24 +94,36 @@ abstract class IMDbQueuePluginBase extends PluginBase implements IMDbQueuePlugin
     return $results;
   }
 
-  protected function getLimits(): array {
-    return $this->getPluginDefinition()['limits'];
+  protected function isAvailable(): bool {
+    return (bool) $this->availableCount;
   }
 
-  protected function claimItem(): object {
-    return $this->queue->claimItem();
+  protected function claimItem(): ?object {
+    return $this->queue->claimItem() ?: NULL;
   }
+
+  /**
+   * @param \Drupal\imdb\IMDbQueueItem $itemData
+   *
+   * @return \Drupal\imdb\IMDbQueueItem
+   * @throws \Exception
+   */
+  abstract protected function prepareItem(IMDbQueueItem $itemData): IMDbQueueItem;
 
   protected function deleteItem($queueItem): void {
     $this->queue->deleteItem($queueItem);
   }
 
-  protected function isAvailable(): bool {
-    return (bool) $this->availableCount;
-  }
-
   protected function updateGlobalCountVariable(): void {
     $this->drupalState->set($this->availableCountVariableName, $this->availableCount);
+  }
+
+  public function clearQueue(): void {
+    $this->queue->deleteQueue();
+  }
+
+  protected function getLimits(): array {
+    return $this->getPluginDefinition()['limits'];
   }
 
 }

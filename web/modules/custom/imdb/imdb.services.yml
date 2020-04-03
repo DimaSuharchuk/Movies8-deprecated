@@ -1,8 +1,6 @@
 services:
   imdb.helper:
     class: Drupal\imdb\IMDbHelper
-  tmdb_fetcher:
-    class: Drupal\imdb\TMDbFetcher
   plugin.manager.imdb_queue:
     class: Drupal\imdb\IMDbQueueManager
     parent: default_plugin_manager

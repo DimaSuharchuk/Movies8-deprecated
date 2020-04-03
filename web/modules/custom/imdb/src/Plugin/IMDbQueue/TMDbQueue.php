@@ -118,9 +118,4 @@ class TMDbQueue extends IMDbQueuePluginBase {
     // Not necessary to use global variables for this queue.
   }
 
-  // @todo Remove after tests.
-  public function deleteQueue() {
-    $this->queue->deleteQueue();
-  }
-
 }
