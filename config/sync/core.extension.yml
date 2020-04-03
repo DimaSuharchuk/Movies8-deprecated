@@ -21,6 +21,7 @@ module:
   filter: 0
   image: 0
   imdb: 0
+  imdb_saver: 0
   language: 0
   link: 0
   locale: 0

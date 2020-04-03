@@ -1,4 +1,4 @@
 services:
-  plugin.manager.resource_saver:
-    class: Drupal\resource_saver\ResourceSaverManager
+  plugin.manager.imdb_saver:
+    class: Drupal\imdb_saver\IMDbSaverManager
     parent: default_plugin_manager

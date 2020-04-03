@@ -5,79 +5,64 @@
  * Module's main file. Provides work with different IMDB APIs.
  */
 
+use Drupal\imdb\IMDbQueueItemRequestType;
+
 /**
  * Implements hook_cron().
  *
  * {@inheritDoc}
  */
 function imdb_cron() {
-  /** @var \Drupal\imdb\IMDbQueueManager $IMDbQueueManager */
-  $IMDbQueueManager = Drupal::service('plugin.manager.imdb_queue');
-  /** @var \Drupal\imdb\Plugin\IMDbQueue\TMDbQueue $TMDbQueue */
-  $TMDbQueue = $IMDbQueueManager->createInstance('tmdb_queue');
-  if ($TMDbQueue->numberOfItems()) {
-    //    $TMDbQueue->deleteQueue();
-    $x = $TMDbQueue->getResults();
-  }
-  $y = 1;
+  /** @var \Drupal\imdb\IMDbQueueManager $imdb_queue_manager */
+  $imdb_queue_manager = Drupal::service('plugin.manager.imdb_queue');
+  /** @var \Drupal\imdb\Plugin\IMDbQueue\TMDbQueue $tmdb_queue */
+  $tmdb_queue = $imdb_queue_manager->createInstance('tmdb_queue');
 
-  //  /** @var \Drupal\imdb\IMDbHelper $helper */
-  //  $helper = Drupal::service('imdb.helper');
-  //
-  //  /** @var \Drupal\imdb\IMDbQueueManager $IMDbQueueManager */
-  //  $IMDbQueueManager = Drupal::service('plugin.manager.imdb_queue');
-  //  /** @var \Drupal\imdb\Plugin\IMDbQueue\TMDbQueue $TMDbQueue */
-  //  $TMDbQueue = $IMDbQueueManager->createInstance('tmdb_queue');
-  //  /** @var \Drupal\imdb\Plugin\IMDbQueue\OMDbQueue $OMDbQueue */
-  //  $OMDbQueue = $IMDbQueueManager->createInstance('omdb_queue');
-  //
-  //  // Get IMDb approved IDs from file.
-  //  $imdbIdsFromFile = $helper->getImdbIdsFromFile();
-  //
-  //  if (!$TMDbQueue->numberOfItems()) {
-  //    // @todo Чергу заповняти не тут, а коли додаються айдішки з інтерфейсу.
-  //    // 2. Заповнити чергу з файла Approved IMDb IDs з контекстом "id".
-  //    // 1. Спочатку треба отримати массив IMDB approved IDs з файла, а також
-  //    // массив IMDb IDs нод з галочкою APPROVED. Diff массивів з акцентом на
-  //    // файл, так як в ньому завжди більше рівно айдішок, ніж є нод.
-  //    foreach ($imdbIdsFromFile as $imdbId) {
-  //      $TMDbQueue->createItem([
-  //        'id' => $imdbId,
-  //        'context' => 'id',
-  //      ]);
-  //    }
-  //  }
-  //  else {
-  //    $tmdbResults = $TMDbQueue->getResults();
-  //    foreach ($tmdbResults as $result) {
-  //      switch ($result['context']) {
-  //        case 'id':
-  //          foreach (['en', 'ru', 'ua'] as $lang) {
-  //            $TMDbQueue->createItem([
-  //              'id' => $result['data']['id'],
-  //              'context' => 'full',
-  //              'approved' => TRUE,
-  //              'lang' => $lang,
-  //            ]);
-  //          }
-  //          break;
-  //      }
-  //    }
-  //
-  //    // Працювати з чергою.
-  //    // 1. Отримати TMDb IDs і додати їх в кінець черги з контекстом
-  //    // "full" (&& approved). + context['lang'] на 3-х мовах.
-  //    // 2. Перед тим, як робити запит на TMDb API треба зробити перевірку по
-  //    // IMDb ID чи є така нода вже на сайті, а якщо є, то поставити галочку
-  //    // APPROVED, якщо така галочка FALSE. Якщо ж такої ноди нема то зберегти
-  //    // ноду на 3 мовах і додати в кінець TMDb черги айдішки рекомендованих
-  //    // фільмів з контекстом "full" (&& recommended).  + context['lang'] на 3-х мовах.
-  //    // 3. Рекомендовані ноди вже можуть бути на сайті, тому перед збереженням
-  //    // треба лише провірити по IMDb ID чи є така нода.
-  //  }
-  //
-  //  $x = 2;
-  //
+  if (!$tmdb_queue->isEmpty()) {
+    // Get results from TMDb service.
+    $tmdb_results = $tmdb_queue->getResults();
+
+    /** @var \Drupal\imdb\IMDbQueueItem $result */
+    foreach ($tmdb_results as $result) {
+      switch ($result->getRequestType()) {
+        case IMDbQueueItemRequestType::FIND:
+          // Nothing to save for this type.
+          break;
+
+        case IMDbQueueItemRequestType::MOVIE:
+          /**
+           * @see \Drupal\imdb_saver\Plugin\QueueWorker\TMDbSaver
+           * @see \Drupal\imdb_saver\Plugin\IMDbSaver\MovieSaver
+           */
+          Drupal::queue('tmdb_result_saver')->createItem([
+            'plugin_id' => 'movie_saver',
+            'item' => $result,
+          ]);
+          break;
+
+        case IMDbQueueItemRequestType::TV:
+          /**
+           * @see \Drupal\imdb_saver\Plugin\QueueWorker\TMDbSaver
+           * @see \Drupal\imdb_saver\Plugin\IMDbSaver\TvSaver
+           */
+          Drupal::queue('tmdb_result_saver')->createItem([
+            'plugin_id' => 'tv_saver',
+            'item' => $result,
+          ]);
+          break;
+
+        default:
+          $message = t("ResourceSaver try to save node with undefined type %type.", [
+            '%type' => $result->getRequestType(),
+          ]);
+          Drupal::messenger()->addError($message);
+          Drupal::logger('imdb_cron:' . __LINE__)->error($message);
+          return;
+      }
+    }
+  }
+
+
   //  // Додати настройку "раз в стільки-то днів обновляти рейтинги".
   //  if (!$OMDbQueue->numberOfItems()) {
   //    // 1. Знайти всі ноди, в яких дата останнього обновлення рейтингу старіша,

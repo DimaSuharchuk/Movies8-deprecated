@@ -1,0 +1,9 @@
+name: IMDb Saver
+description: Save data from IMDb services into nodes, aka. "Connector between IMDb and Drupal".
+type: module
+package: Custom
+core: 8.x
+
+dependencies:
+  - imdb:imdb
+  - resource:resource
