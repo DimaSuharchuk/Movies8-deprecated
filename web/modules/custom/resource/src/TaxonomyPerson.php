@@ -6,6 +6,8 @@ class TaxonomyPerson extends Taxonomy {
 
   protected $bundle = 'person';
 
+  protected $lock_eng_language = TRUE;
+
   /**
    * TaxonomyPerson constructor.
    *

@@ -8,6 +8,8 @@ abstract class Media extends ResourceBase {
 
   protected $bundle_key = 'bundle';
 
+  protected $lock_eng_language = TRUE;
+
   /**
    * Media constructor.
    *

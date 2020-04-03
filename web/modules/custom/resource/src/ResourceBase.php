@@ -64,6 +64,16 @@ abstract class ResourceBase implements ResourceInterface {
    */
   protected $entity;
 
+  /**
+   * We set language of child entities same as parent has, but some entities
+   * should be created only on English.
+   * To lock English language for entity (ResourceInterface) set this property
+   * to TRUE.
+   *
+   * @var bool
+   */
+  protected $lock_eng_language = FALSE;
+
 
   /**
    * ResourceBase constructor.
@@ -80,8 +90,11 @@ abstract class ResourceBase implements ResourceInterface {
    * {@inheritDoc}
    */
   public function setLanguage(IMDbQueueItemLanguage $lang_object): ResourceInterface {
+    $lang_object = $this->lock_eng_language ? IMDbQueueItemLanguage::ENG() : $lang_object;
+
     $this->lang_object = $lang_object;
     $this->lang_code = $lang_object->value();
+
     return $this;
   }
 
@@ -108,6 +121,10 @@ abstract class ResourceBase implements ResourceInterface {
       }
       else {
         $this->entity = $this->entity->addTranslation($this->lang_code);
+        if (method_exists($this->entity, 'setOwnerId')) {
+          $this->entity->setOwnerId(1);
+        }
+
         $available_fields = array_keys($this->entity->getTranslatableFields());
       }
     }
@@ -179,7 +196,6 @@ abstract class ResourceBase implements ResourceInterface {
     $entity = $this->storage->create([
       $this->bundle_key => $this->bundle,
       'uid' => 1,
-      'langcode' => $this->lang_code,
     ]);
 
     return $entity;

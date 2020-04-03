@@ -47,6 +47,15 @@ content:
     third_party_settings: {  }
     type: entity_reference_label
     region: content
+  field_crew:
+    type: entity_reference_revisions_entity_view
+    weight: 17
+    region: content
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
   field_genres:
     weight: 3
     label: above
@@ -175,5 +184,4 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
-  field_crew: true
   langcode: true

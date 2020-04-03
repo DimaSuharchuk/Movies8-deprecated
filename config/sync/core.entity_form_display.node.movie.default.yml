@@ -58,6 +58,18 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
+  field_crew:
+    type: entity_reference_paragraphs
+    weight: 24
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: crew_person
+    third_party_settings: {  }
   field_genres:
     weight: 10
     settings:
@@ -218,5 +230,4 @@ content:
       match_limit: 10
     region: content
     third_party_settings: {  }
-hidden:
-  field_crew: true
+hidden: {  }

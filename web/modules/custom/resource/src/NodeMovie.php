@@ -62,7 +62,7 @@ class NodeMovie extends Node {
     float $field_imdb_rating,
     string $field_original_title,
     string $field_overview,
-    MediaPoster $field_poster,
+    ?MediaPoster $field_poster,
     CollectionMediaProductionCompany $field_production_companies,
     CollectionNodeMovie $field_recommendations,
     bool $field_recommended,
