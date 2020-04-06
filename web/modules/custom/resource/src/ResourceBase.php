@@ -153,15 +153,6 @@ abstract class ResourceBase implements ResourceInterface {
             // Move to next element in collection.
             $item->next();
           }
-        } elseif ($item instanceof CollectionDrupalEntity) {
-          while ($item->valid()) {
-            /** @var ContentEntityInterface $sub_item */
-            $sub_item = $item->current();
-            // Save every child entity in this (parent) entity's field.
-            $this->entity->{$field}->appendItem($sub_item);
-            // Move to next element in collection.
-            $item->next();
-          }
         }
         else {
           // "Child entity".
