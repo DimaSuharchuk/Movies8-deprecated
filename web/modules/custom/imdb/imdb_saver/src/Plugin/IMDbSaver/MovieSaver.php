@@ -6,9 +6,10 @@ use DateTime;
 use Drupal;
 use Drupal\imdb\IMDbQueueItem;
 use Drupal\imdb_saver\IMDbSaverPluginBase;
+use Drupal\imdb_saver\SaveLater;
+use Drupal\resource\CollectionDrupalEntityNode;
 use Drupal\resource\CollectionMediaProductionCompany;
 use Drupal\resource\CollectionMediaTrailer;
-use Drupal\resource\CollectionNodeMovie;
 use Drupal\resource\CollectionParagraphCast;
 use Drupal\resource\CollectionParagraphCrew;
 use Drupal\resource\CollectionTaxonomyGenre;
@@ -149,12 +150,54 @@ class MovieSaver extends IMDbSaverPluginBase {
         }
       }
 
-      // @todo Maybe we should:
-      //   1) update node later when recommendations and similar nodes already saved
-      //   or
-      //   2) move this node in the end of queue if $item->getApprovedStatus() === TRUE.
-      $field_recommendations = new CollectionNodeMovie();
-      $field_similar = new CollectionNodeMovie();
+
+      // We check whether it's possible to set the values of recommended and
+      // similar movies or to postpone the saving of this node until later.
+      $field_recommendations = new CollectionDrupalEntityNode();
+      $field_similar = new CollectionDrupalEntityNode();
+      if ($item->getApprovedStatus()) {
+        /** @var \Drupal\node\NodeStorageInterface $storage */
+        $storage = Drupal::entityTypeManager()->getStorage('node');
+
+        // Collect IDs from IMDbQueueItem.
+        $recommendations_ids = array_column($fields['recommendations']['results'], 'id');
+        // Search already saved nodes.
+        $recommendations_nodes = $storage->loadByProperties([
+          'field_tmdb_id' => $recommendations_ids,
+        ]);
+        // This movie can't be saved before all dependencies not saved.
+        if (count($recommendations_ids) !== count($recommendations_nodes)) {
+          // Try to save it later. Add in the end of queue.
+          throw new SaveLater();
+        }
+        else {
+          // To prevent useless search for similar movies if recommended not
+          // added, we search for them if all recommended movies already added
+          // here.
+          // Copy-paste a bit...
+
+          // Collect IDs from IMDbQueueItem.
+          $similar_ids = array_column($fields['similar']['results'], 'id');
+          // Search already saved nodes.
+          $similar_nodes = $storage->loadByProperties([
+            'field_tmdb_id' => $similar_ids,
+          ]);
+          // This movie can't be saved before all dependencies not saved.
+          if (count($similar_ids) !== count($similar_nodes)) {
+            // Try to save it later. Add in the end of queue.
+            throw new SaveLater();
+          }
+          else {
+            /** @var \Drupal\node\Entity\Node $node */
+            foreach ($recommendations_nodes as $node) {
+              $field_recommendations->add($node);
+            }
+            foreach ($similar_nodes as $node) {
+              $field_similar->add($node);
+            }
+          }
+        }
+      }
 
       $movie = new NodeMovie(
         $title,
@@ -178,14 +221,15 @@ class MovieSaver extends IMDbSaverPluginBase {
       );
       $movie->setLanguage($item->getLangObject())->save();
     }
-    catch (Exception $e) {
-      Drupal::logger(__CLASS__)->error($e->getMessage());
-
+    catch (SaveLater $_) {
       // Try to save it later. Add in the end of queue.
       Drupal::queue('tmdb_result_saver')->createItem([
         'plugin_id' => 'movie_saver',
         'item' => $item,
       ]);
+    }
+    catch (Exception $e) {
+      Drupal::logger(__CLASS__)->error($e->getMessage());
     }
   }
 

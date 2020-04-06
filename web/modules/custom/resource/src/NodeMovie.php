@@ -33,7 +33,7 @@ class NodeMovie extends Node {
    *   Poster Media entity.
    * @param \Drupal\resource\CollectionMediaProductionCompany $field_production_companies
    *   Production companies created the movie.
-   * @param \Drupal\resource\CollectionNodeMovie $field_recommendations
+   * @param \Drupal\resource\CollectionDrupalEntityNode $field_recommendations
    *   List of same nodes like this. TMDb users recommend the movies in this
    *   list.
    * @param bool $field_recommended
@@ -42,7 +42,7 @@ class NodeMovie extends Node {
    *   Date when the movie saw the world.
    * @param int $field_runtime
    *   Movie duration in minutes.
-   * @param \Drupal\resource\CollectionNodeMovie $field_similar
+   * @param \Drupal\resource\CollectionDrupalEntityNode $field_similar
    *   List of same nodes like this. TMDb algorithms recommend the movies in
    *   this list.
    * @param int $field_tmdb_id
@@ -64,11 +64,11 @@ class NodeMovie extends Node {
     string $field_overview,
     ?MediaPoster $field_poster,
     CollectionMediaProductionCompany $field_production_companies,
-    CollectionNodeMovie $field_recommendations,
+    CollectionDrupalEntityNode $field_recommendations,
     bool $field_recommended,
     DateTime $field_release_date,
     int $field_runtime,
-    CollectionNodeMovie $field_similar,
+    CollectionDrupalEntityNode $field_similar,
     int $field_tmdb_id,
     CollectionMediaTrailer $field_trailers
   ) {
