@@ -110,7 +110,12 @@ class IMDbIDsAddForm extends FormBase {
      * Statistics.
      */
     /** @var \Drupal\node\NodeStorageInterface $node_storage */
-    $node_storage = Drupal::entityTypeManager()->getStorage('node');
+    try {
+      $node_storage = Drupal::entityTypeManager()->getStorage('node');
+    }
+    catch (PluginException $e) {
+      Drupal::messenger()->addError($e->getMessage());
+    }
     $movies = $node_storage->loadByProperties([
       'type' => 'movie',
     ]);
@@ -173,6 +178,9 @@ class IMDbIDsAddForm extends FormBase {
 
   /**
    * {@inheritDoc}
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Get IMDb IDs from form.
@@ -245,6 +253,8 @@ class IMDbIDsAddForm extends FormBase {
 
   /**
    * Clear TMDb Queue manually.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
   public function clearTMDbQueue() {
     /** @var \Drupal\imdb\IMDbQueueManager $imdb_queue_manager */

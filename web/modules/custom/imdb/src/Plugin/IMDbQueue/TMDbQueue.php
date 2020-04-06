@@ -37,6 +37,8 @@ class TMDbQueue extends IMDbQueuePluginBase {
   }
 
   /**
+   * {@inheritDoc}
+   *
    * @param \Drupal\imdb\IMDbQueueItem $itemData
    *
    * @return \Drupal\imdb\IMDbQueueItem
