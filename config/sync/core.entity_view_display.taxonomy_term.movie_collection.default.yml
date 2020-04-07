@@ -1,0 +1,32 @@
+uuid: 21e828df-5683-4187-a5fa-aca504774836
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.movie_collection.field_tmdb_id
+    - taxonomy.vocabulary.movie_collection
+  module:
+    - text
+id: taxonomy_term.movie_collection.default
+targetEntityType: taxonomy_term
+bundle: movie_collection
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_tmdb_id:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  langcode: true

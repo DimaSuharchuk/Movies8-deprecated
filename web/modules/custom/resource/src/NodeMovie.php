@@ -15,7 +15,7 @@ class NodeMovie extends Node {
    *   Node title.
    * @param \Drupal\resource\CollectionParagraphCast $field_cast
    *   List of persons who starred in the movie.
-   * @param \Drupal\resource\NodeCollection|null $field_collection
+   * @param \Drupal\resource\TaxonomyMovieCollection|null $field_collection
    *   Belongs to collection.
    * @param \Drupal\resource\CollectionParagraphCrew $field_crew
    *   List of persons who worked on movie.
@@ -49,7 +49,7 @@ class NodeMovie extends Node {
   public function __construct(
     string $title,
     CollectionParagraphCast $field_cast,
-    ?NodeCollection $field_collection,
+    ?TaxonomyMovieCollection $field_collection,
     CollectionParagraphCrew $field_crew,
     CollectionTaxonomyGenre $field_genres,
     string $field_imdb_id,

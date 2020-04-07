@@ -1,14 +1,14 @@
-uuid: 47fdafc1-7f4b-4baa-a227-1725b5f94497
+uuid: 367adcd3-72d1-4df3-a34f-29a25e27a047
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_tmdb_id
-    - node.type.collection
-id: node.collection.field_tmdb_id
+    - field.storage.taxonomy_term.field_tmdb_id
+    - taxonomy.vocabulary.movie_collection
+id: taxonomy_term.movie_collection.field_tmdb_id
 field_name: field_tmdb_id
-entity_type: node
-bundle: collection
+entity_type: taxonomy_term
+bundle: movie_collection
 label: 'TMDb ID'
 description: ''
 required: true
@@ -16,7 +16,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  min: 0
+  min: 1
   max: null
   prefix: ''
   suffix: ''

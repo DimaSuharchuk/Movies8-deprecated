@@ -17,11 +17,11 @@ use Drupal\resource\MediaPoster;
 use Drupal\resource\MediaProductionCompany;
 use Drupal\resource\MediaProfile;
 use Drupal\resource\MediaTrailer;
-use Drupal\resource\NodeCollection;
 use Drupal\resource\NodeMovie;
 use Drupal\resource\ParagraphCast;
 use Drupal\resource\ParagraphCrew;
 use Drupal\resource\TaxonomyGenre;
+use Drupal\resource\TaxonomyMovieCollection;
 use Drupal\resource\TaxonomyPerson;
 use Exception;
 
@@ -57,7 +57,7 @@ class MovieSaver extends IMDbSaverPluginBase {
       // ResourceInterface fields.
       $field_collection = NULL;
       if ($fields['belongs_to_collection']) {
-        $field_collection = new NodeCollection(
+        $field_collection = new TaxonomyMovieCollection(
           $fields['belongs_to_collection']['name'],
           $fields['belongs_to_collection']['id']
         );

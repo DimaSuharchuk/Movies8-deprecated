@@ -1,11 +1,11 @@
-uuid: 0e53c0af-004a-4112-a936-d5a453a96628
+uuid: 9c96dcf8-b02c-40ca-9f5b-ccee8cabe46b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_collection
-    - node.type.collection
     - node.type.movie
+    - taxonomy.vocabulary.movie_collection
 id: node.movie.field_collection
 field_name: field_collection
 entity_type: node
@@ -17,12 +17,13 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      collection: collection
+      movie_collection: movie_collection
     sort:
-      field: _none
+      field: name
+      direction: asc
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

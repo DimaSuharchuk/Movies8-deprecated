@@ -1,0 +1,16 @@
+uuid: 8f079993-0183-4b84-bddf-133b5bfe1dbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.movie_collection
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.movie_collection
+target_entity_type_id: taxonomy_term
+target_bundle: movie_collection
+default_langcode: site_default
+language_alterable: true

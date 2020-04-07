@@ -40,7 +40,7 @@ content:
     third_party_settings: {  }
     region: content
   field_collection:
-    weight: 2
+    weight: 18
     label: above
     settings:
       link: true

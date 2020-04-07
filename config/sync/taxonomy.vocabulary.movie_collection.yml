@@ -1,0 +1,8 @@
+uuid: ea984524-160d-4c05-947f-f8a31286827f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Movie collection'
+vid: movie_collection
+description: ''
+weight: 0
