@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
+    - field.field.node.movie.field_approved
     - field.field.node.movie.field_cast
     - field.field.node.movie.field_collection
     - field.field.node.movie.field_crew
@@ -15,7 +16,6 @@ dependencies:
     - field.field.node.movie.field_poster
     - field.field.node.movie.field_production_companies
     - field.field.node.movie.field_recommendations
-    - field.field.node.movie.field_recommended
     - field.field.node.movie.field_release_date
     - field.field.node.movie.field_runtime
     - field.field.node.movie.field_similar
@@ -30,11 +30,12 @@ bundle: movie
 mode: teaser
 content:
   links:
-    weight: 100
+    weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_approved: true
   field_cast: true
   field_collection: true
   field_crew: true
@@ -46,7 +47,6 @@ hidden:
   field_poster: true
   field_production_companies: true
   field_recommendations: true
-  field_recommended: true
   field_release_date: true
   field_runtime: true
   field_similar: true

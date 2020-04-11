@@ -46,7 +46,7 @@ class MovieSaver extends IMDbSaverPluginBase {
     $field_imdb_rating = 0; // This rating should set OMDb queue.
     $field_original_title = $title; // This is non-translatable field.
     $field_overview = $fields['overview'];
-    $field_recommended = $item->getApprovedStatus();
+    $field_approved = $item->getApprovedStatus();
     $field_runtime = $fields['runtime'];
     $field_tmdb_id = $item->getId();
 
@@ -161,7 +161,7 @@ class MovieSaver extends IMDbSaverPluginBase {
         $field_overview,
         $field_poster,
         $field_production_companies,
-        $field_recommended,
+        $field_approved,
         $field_release_date,
         $field_runtime,
         $field_tmdb_id,

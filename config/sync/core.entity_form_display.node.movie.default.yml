@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.node.movie.field_approved
     - field.field.node.movie.field_cast
     - field.field.node.movie.field_collection
     - field.field.node.movie.field_crew
@@ -14,7 +15,6 @@ dependencies:
     - field.field.node.movie.field_poster
     - field.field.node.movie.field_production_companies
     - field.field.node.movie.field_recommendations
-    - field.field.node.movie.field_recommended
     - field.field.node.movie.field_release_date
     - field.field.node.movie.field_runtime
     - field.field.node.movie.field_similar
@@ -32,13 +32,20 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 4
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_approved:
+    weight: 14
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
   field_cast:
     type: entity_reference_paragraphs
-    weight: 23
+    weight: 17
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -49,7 +56,7 @@ content:
     third_party_settings: {  }
     region: content
   field_collection:
-    weight: 26
+    weight: 12
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -60,7 +67,7 @@ content:
     region: content
   field_crew:
     type: entity_reference_paragraphs
-    weight: 24
+    weight: 18
     region: content
     settings:
       title: Paragraph
@@ -71,7 +78,7 @@ content:
       default_paragraph_type: crew_person
     third_party_settings: {  }
   field_genres:
-    weight: 10
+    weight: 5
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -81,7 +88,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_imdb_id:
-    weight: 12
+    weight: 3
     settings:
       size: 60
       placeholder: ''
@@ -89,14 +96,14 @@ content:
     type: string_textfield
     region: content
   field_imdb_rating:
-    weight: 18
+    weight: 11
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_original_title:
-    weight: 13
+    weight: 6
     settings:
       size: 60
       placeholder: ''
@@ -104,7 +111,7 @@ content:
     type: string_textfield
     region: content
   field_overview:
-    weight: 14
+    weight: 7
     settings:
       rows: 5
       placeholder: ''
@@ -112,7 +119,7 @@ content:
     type: string_textarea
     region: content
   field_poster:
-    weight: 8
+    weight: 4
     settings:
       media_types: {  }
     third_party_settings: {  }
@@ -120,13 +127,13 @@ content:
     region: content
   field_production_companies:
     type: media_library_widget
-    weight: 15
+    weight: 8
     settings:
       media_types: {  }
     third_party_settings: {  }
     region: content
   field_recommendations:
-    weight: 19
+    weight: 15
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -135,28 +142,21 @@ content:
     third_party_settings: {  }
     type: entity_reference_autocomplete
     region: content
-  field_recommended:
-    weight: 22
-    settings:
-      display_label: true
-    third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_release_date:
-    weight: 16
+    weight: 9
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
     region: content
   field_runtime:
-    weight: 17
+    weight: 10
     settings:
       placeholder: ''
     third_party_settings: {  }
     type: number
     region: content
   field_similar:
-    weight: 20
+    weight: 16
     settings:
       match_operator: CONTAINS
       match_limit: 10
@@ -166,7 +166,7 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_tmdb_id:
-    weight: 11
+    weight: 2
     settings:
       placeholder: ''
     third_party_settings: {  }
@@ -174,7 +174,7 @@ content:
     region: content
   field_trailers:
     type: media_library_widget
-    weight: 21
+    weight: 13
     settings:
       media_types: {  }
     third_party_settings: {  }
@@ -190,21 +190,21 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 5
+    weight: 23
     region: content
     third_party_settings: {  }
   status:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 7
+    weight: 19
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 6
+    weight: 24
     region: content
     third_party_settings: {  }
   title:
@@ -216,13 +216,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 3
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 20
     settings:
       match_operator: CONTAINS
       size: 60

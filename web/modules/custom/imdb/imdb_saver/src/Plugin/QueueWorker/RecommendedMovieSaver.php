@@ -83,7 +83,7 @@ class RecommendedMovieSaver extends QueueWorkerBase {
           foreach ($similar_nodes as $node) {
             $movie->{'field_similar'}->appendItem($node);
           }
-          $movie->set('field_recommended', TRUE);
+          $movie->set('field_approved', TRUE);
           $movie->save();
         }
       }

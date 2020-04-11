@@ -1,11 +1,11 @@
-uuid: c3773798-3b1c-4a5b-90b8-7fd2d4a8d720
+uuid: e110f6c2-6093-46a1-8faf-a56cc7ab2167
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_recommended
-field_name: field_recommended
+id: node.field_approved
+field_name: field_approved
 entity_type: node
 type: boolean
 settings: {  }

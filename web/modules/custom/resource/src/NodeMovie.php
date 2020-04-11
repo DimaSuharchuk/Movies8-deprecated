@@ -33,8 +33,8 @@ class NodeMovie extends Node {
    *   Poster Media entity.
    * @param \Drupal\resource\CollectionMediaProductionCompany $field_production_companies
    *   Production companies created the movie.
-   * @param bool $field_recommended
-   *   TRUE, if I recommend this movie.
+   * @param bool $field_approved
+   *   TRUE, if I approve this movie.
    * @param \DateTime $field_release_date
    *   Date when the movie saw the world.
    * @param int $field_runtime
@@ -58,7 +58,7 @@ class NodeMovie extends Node {
     string $field_overview,
     ?MediaPoster $field_poster,
     CollectionMediaProductionCompany $field_production_companies,
-    bool $field_recommended,
+    bool $field_approved,
     DateTime $field_release_date,
     int $field_runtime,
     int $field_tmdb_id,
@@ -76,7 +76,7 @@ class NodeMovie extends Node {
     $this->fields['field_overview'] = $field_overview;
     $this->fields['field_poster'] = $field_poster;
     $this->fields['field_production_companies'] = $field_production_companies;
-    $this->fields['field_recommended'] = $field_recommended;
+    $this->fields['field_approved'] = $field_approved;
     $this->fields['field_release_date'] = $field_release_date ? $field_release_date->format('Y-m-d') : NULL;
     $this->fields['field_runtime'] = $field_runtime;
     $this->fields['field_trailers'] = $field_trailers;

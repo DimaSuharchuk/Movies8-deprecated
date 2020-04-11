@@ -78,6 +78,9 @@ class IMDbIDsAddForm extends FormBase {
       '#disabled' => $disabled,
       '#submit' => ['::submitForm'],
     ];
+    /**
+     * @see IMDbIDsAddForm::clearTMDbQueue()
+     */
     $form['actions']['clear'] = [
       '#type' => 'submit',
       '#value' => $this->t('Clear TMDb queue'),
@@ -206,7 +209,7 @@ class IMDbIDsAddForm extends FormBase {
       // nodes could be approved later.
       $nodes = $node_storage->loadByProperties([
         'field_imdb_id' => $ids,
-        'field_recommended' => TRUE,
+        'field_approved' => TRUE,
       ]);
 
       // Filter new imdb ids from already added nodes with some imdb ids.
