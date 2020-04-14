@@ -1,0 +1,23 @@
+uuid: 9782b9be-d427-46ed-b6f8-c8f2d53d6d14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_seasons
+    - node.type.tv
+id: node.tv.field_number_of_seasons
+field_name: field_number_of_seasons
+entity_type: node
+bundle: tv
+label: 'Number of seasons'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

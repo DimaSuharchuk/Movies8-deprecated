@@ -1,0 +1,28 @@
+uuid: f52b9f32-3e9d-4ef0-8737-1d9ed1babfac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_trailers
+    - media.type.trailer
+    - node.type.tv
+id: node.tv.field_trailers
+field_name: field_trailers
+entity_type: node
+bundle: tv
+label: Trailers
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      trailer: trailer
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

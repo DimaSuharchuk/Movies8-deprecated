@@ -1,0 +1,23 @@
+uuid: fccda0c4-3030-4631-a9c0-2bbeea96bdb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_approved
+    - node.type.tv
+id: node.tv.field_approved
+field_name: field_approved
+entity_type: node
+bundle: tv
+label: Approved
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

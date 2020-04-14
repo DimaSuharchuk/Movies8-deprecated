@@ -1,0 +1,20 @@
+uuid: 74e69b49-556a-4eee-ad51-97411f600f87
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.production_company
+id: media.production_company.name
+field_name: name
+entity_type: media
+bundle: production_company
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

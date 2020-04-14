@@ -1,0 +1,28 @@
+uuid: 8511f903-4517-4cff-ab33-a8d9cc32e0d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poster
+    - media.type.poster
+    - paragraphs.paragraphs_type.season
+id: paragraph.season.field_poster
+field_name: field_poster
+entity_type: paragraph
+bundle: season
+label: Poster
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      poster: poster
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

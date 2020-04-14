@@ -1,0 +1,20 @@
+uuid: 958ff152-261d-4ad6-b8e0-9cbc0eabf07b
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_episode_count
+field_name: field_episode_count
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

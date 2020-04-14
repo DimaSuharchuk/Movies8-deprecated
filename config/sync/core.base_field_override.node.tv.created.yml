@@ -1,0 +1,18 @@
+uuid: eb2fe309-74bf-44e6-87df-6c25bb176f88
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tv
+id: node.tv.created
+field_name: created
+entity_type: node
+bundle: tv
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

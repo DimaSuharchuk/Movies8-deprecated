@@ -1,0 +1,18 @@
+uuid: c81cc995-45a0-4e51-9fe3-3f9f14fa0b21
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.trailer
+id: media.trailer.created
+field_name: created
+entity_type: media
+bundle: trailer
+label: 'Authored on'
+description: 'The time the media item was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getRequestTime'
+settings: {  }
+field_type: created

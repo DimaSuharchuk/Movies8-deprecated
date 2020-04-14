@@ -1,0 +1,20 @@
+uuid: 051f6836-c6fb-4e5c-9964-7428ab796804
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.poster
+id: media.poster.uid
+field_name: uid
+entity_type: media
+bundle: poster
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,80 @@
+uuid: e6721cb3-bcf9-418f-9e5b-8227c1e3e6cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.season.field_episode_count
+    - field.field.paragraph.season.field_episodes
+    - field.field.paragraph.season.field_overview
+    - field.field.paragraph.season.field_poster
+    - field.field.paragraph.season.field_season_number
+    - field.field.paragraph.season.field_title
+    - field.field.paragraph.season.field_tmdb_id
+    - paragraphs.paragraphs_type.season
+  module:
+    - media_library
+    - paragraphs
+id: paragraph.season.default
+targetEntityType: paragraph
+bundle: season
+mode: default
+content:
+  field_episode_count:
+    weight: 5
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_episodes:
+    type: entity_reference_paragraphs
+    weight: 7
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_overview:
+    weight: 3
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textarea
+    region: content
+  field_poster:
+    type: media_library_widget
+    weight: 4
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    region: content
+  field_season_number:
+    weight: 6
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_tmdb_id:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,18 @@
+uuid: 338158fd-11e8-42d1-b4dc-5c98488e2c35
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.tv
+id: node.tv.changed
+field_name: changed
+entity_type: node
+bundle: tv
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

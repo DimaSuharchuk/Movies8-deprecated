@@ -1,0 +1,20 @@
+uuid: 32afc828-57b1-410b-86ba-07ca5803ac7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.episode_image
+id: media.episode_image.name
+field_name: name
+entity_type: media
+bundle: episode_image
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

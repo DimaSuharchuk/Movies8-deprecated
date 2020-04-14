@@ -1,0 +1,18 @@
+uuid: 1e0084db-8b51-4544-ab98-ee3608aa3858
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.trailer
+id: media.trailer.changed
+field_name: changed
+entity_type: media
+bundle: trailer
+label: Changed
+description: 'The time the media item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

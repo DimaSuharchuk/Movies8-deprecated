@@ -1,0 +1,23 @@
+uuid: 4f9d7176-0924-4aa3-9096-bca8c3531175
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_episode_count
+    - paragraphs.paragraphs_type.season
+id: paragraph.season.field_episode_count
+field_name: field_episode_count
+entity_type: paragraph
+bundle: season
+label: 'Episode count'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

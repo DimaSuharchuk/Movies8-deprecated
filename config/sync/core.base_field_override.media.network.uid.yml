@@ -1,0 +1,20 @@
+uuid: 780d9a4d-1f80-4972-b251-e778f9a7545b
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.network
+id: media.network.uid
+field_name: uid
+entity_type: media
+bundle: network
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: 9124ad06-cfc7-468a-aea6-bd9778f0ad79
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_imdb_id
+    - paragraphs.paragraphs_type.episode
+id: paragraph.episode.field_imdb_id
+field_name: field_imdb_id
+entity_type: paragraph
+bundle: episode
+label: 'IMDb ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

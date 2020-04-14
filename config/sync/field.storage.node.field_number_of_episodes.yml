@@ -1,0 +1,20 @@
+uuid: 0260478d-7bfe-4abd-bc7e-9719f7f250b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_number_of_episodes
+field_name: field_number_of_episodes
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

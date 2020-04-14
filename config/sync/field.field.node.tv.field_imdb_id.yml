@@ -1,0 +1,19 @@
+uuid: 80f6cdf0-68eb-40ce-9597-9ee16d3d33a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_imdb_id
+    - node.type.tv
+id: node.tv.field_imdb_id
+field_name: field_imdb_id
+entity_type: node
+bundle: tv
+label: 'IMDb ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

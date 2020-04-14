@@ -1,0 +1,20 @@
+uuid: cd00a0ac-8b23-4d22-bd7f-c1c981d0ed9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.profile
+id: media.profile.name
+field_name: name
+entity_type: media
+bundle: profile
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

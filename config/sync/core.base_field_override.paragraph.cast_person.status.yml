@@ -1,0 +1,22 @@
+uuid: 5051e58b-b2e5-4b49-94c5-a2b98b4d1ba4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.cast_person
+id: paragraph.cast_person.status
+field_name: status
+entity_type: paragraph
+bundle: cast_person
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

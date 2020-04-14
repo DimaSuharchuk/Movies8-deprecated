@@ -1,0 +1,22 @@
+uuid: ec1d5664-ff68-495c-a517-8fd6fcab7738
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.season
+id: paragraph.season.status
+field_name: status
+entity_type: paragraph
+bundle: season
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,10 @@
+uuid: 184037ee-d7d8-4a03-8799-9399774add3d
+langcode: en
+status: true
+dependencies: {  }
+id: episode
+label: Episode
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

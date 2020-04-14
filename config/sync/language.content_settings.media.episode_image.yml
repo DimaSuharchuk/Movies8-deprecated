@@ -1,0 +1,18 @@
+uuid: 759cbc63-fe36-4169-abf8-eac853c1d4f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.episode_image
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: media.episode_image
+target_entity_type_id: media
+target_bundle: episode_image
+default_langcode: site_default
+language_alterable: false

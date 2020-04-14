@@ -1,0 +1,20 @@
+uuid: 242fade2-2461-41fb-ba88-4ed3f676d2bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.network
+id: media.network.name
+field_name: name
+entity_type: media
+bundle: network
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

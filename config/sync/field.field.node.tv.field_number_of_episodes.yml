@@ -1,0 +1,23 @@
+uuid: aa508d8a-dc21-4584-b62a-654298ef952f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_episodes
+    - node.type.tv
+id: node.tv.field_number_of_episodes
+field_name: field_number_of_episodes
+entity_type: node
+bundle: tv
+label: 'Number of episodes'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,20 @@
+uuid: a2f54b5c-8f94-4eac-9eda-cc172e4054ec
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_imdb_rating
+field_name: field_imdb_rating
+entity_type: paragraph
+type: decimal
+settings:
+  precision: 10
+  scale: 1
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

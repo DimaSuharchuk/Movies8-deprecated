@@ -1,0 +1,23 @@
+uuid: 8a345ecd-0357-4fd7-962b-54ae260944ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_imdb_rating
+    - paragraphs.paragraphs_type.episode
+id: paragraph.episode.field_imdb_rating
+field_name: field_imdb_rating
+entity_type: paragraph
+bundle: episode
+label: 'IMDb rating'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: !!float 10
+  prefix: ''
+  suffix: ''
+field_type: decimal

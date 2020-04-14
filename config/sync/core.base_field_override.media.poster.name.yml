@@ -1,0 +1,20 @@
+uuid: 3ae12ba2-717c-4434-9956-ab17a2e2cca5
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.poster
+id: media.poster.name
+field_name: name
+entity_type: media
+bundle: poster
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

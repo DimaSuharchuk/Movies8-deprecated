@@ -1,0 +1,23 @@
+uuid: 9f5bf063-b982-4042-8e9a-2284253d4df3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_in_production
+    - node.type.tv
+id: node.tv.field_in_production
+field_name: field_in_production
+entity_type: node
+bundle: tv
+label: 'In production'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

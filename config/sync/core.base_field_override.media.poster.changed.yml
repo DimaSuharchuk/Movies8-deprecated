@@ -1,0 +1,18 @@
+uuid: 361d4235-5a5e-4a43-bc4a-1766a6f55b5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.poster
+id: media.poster.changed
+field_name: changed
+entity_type: media
+bundle: poster
+label: Changed
+description: 'The time the media item was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

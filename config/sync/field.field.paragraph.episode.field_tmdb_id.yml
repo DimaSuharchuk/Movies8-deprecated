@@ -1,0 +1,23 @@
+uuid: 9d38725e-fbcf-43a7-8578-d1f6c9c288ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tmdb_id
+    - paragraphs.paragraphs_type.episode
+id: paragraph.episode.field_tmdb_id
+field_name: field_tmdb_id
+entity_type: paragraph
+bundle: episode
+label: 'TMDb ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

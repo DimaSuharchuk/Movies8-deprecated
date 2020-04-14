@@ -1,0 +1,23 @@
+uuid: 9c590d3b-d200-4f35-bd8d-0d1da79f6cf9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_tmdb_id
+    - media.type.network
+id: media.network.field_tmdb_id
+field_name: field_tmdb_id
+entity_type: media
+bundle: network
+label: 'TMDb ID'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

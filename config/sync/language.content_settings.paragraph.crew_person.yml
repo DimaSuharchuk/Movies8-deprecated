@@ -1,0 +1,18 @@
+uuid: 8a0726f4-37ad-40ac-8c68-cea1282e9c39
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.crew_person
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.crew_person
+target_entity_type_id: paragraph
+target_bundle: crew_person
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,19 @@
+uuid: 3c55906e-c502-4b78-b3ab-0da882e57501
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_site
+    - node.type.tv
+id: node.tv.field_site
+field_name: field_site
+entity_type: node
+bundle: tv
+label: Site
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

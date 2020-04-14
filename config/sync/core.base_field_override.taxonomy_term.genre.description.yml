@@ -1,0 +1,20 @@
+uuid: 7a7aa01b-30a3-4d68-bcb0-502b2d62d379
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.genre
+  module:
+    - text
+id: taxonomy_term.genre.description
+field_name: description
+entity_type: taxonomy_term
+bundle: genre
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

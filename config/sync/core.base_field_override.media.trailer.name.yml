@@ -1,0 +1,20 @@
+uuid: 831aa7d0-c653-4cac-8fbd-b67c06542cf5
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.trailer
+id: media.trailer.name
+field_name: name
+entity_type: media
+bundle: trailer
+label: Name
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

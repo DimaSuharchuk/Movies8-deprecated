@@ -1,0 +1,37 @@
+uuid: 97b0d1c5-26b1-4f59-b835-1538e988ed31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_guest_stars
+    - paragraphs.paragraphs_type.cast_person
+    - paragraphs.paragraphs_type.episode
+  module:
+    - entity_reference_revisions
+id: paragraph.episode.field_guest_stars
+field_name: field_guest_stars
+entity_type: paragraph
+bundle: episode
+label: 'Guest stars'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      cast_person: cast_person
+    target_bundles_drag_drop:
+      cast_person:
+        enabled: true
+        weight: 4
+      crew_person:
+        weight: 5
+        enabled: false
+      episode:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,23 @@
+uuid: f969c8a7-bdfc-4cf7-92e3-9a0f4e7904ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_runtime
+    - node.type.tv
+id: node.tv.field_runtime
+field_name: field_runtime
+entity_type: node
+bundle: tv
+label: 'Episode runtime'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

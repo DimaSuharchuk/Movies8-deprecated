@@ -1,0 +1,23 @@
+uuid: 29e4886f-975e-4e69-b297-7256be50b2ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_season_number
+    - paragraphs.paragraphs_type.season
+id: paragraph.season.field_season_number
+field_name: field_season_number
+entity_type: paragraph
+bundle: season
+label: 'Season number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,22 @@
+uuid: 72889561-0283-4157-b130-b92b35ebf5a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.genre
+id: taxonomy_term.genre.status
+field_name: status
+entity_type: taxonomy_term
+bundle: genre
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

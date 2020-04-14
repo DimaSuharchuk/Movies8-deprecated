@@ -1,0 +1,37 @@
+uuid: a6afa6da-b1de-46f3-9b83-36e9a5a4a512
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.production_company
+  module:
+    - image
+id: media.production_company.thumbnail
+field_name: thumbnail
+entity_type: media
+bundle: production_company
+label: Thumbnail
+description: 'The thumbnail of the media item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_extensions: 'png gif jpg jpeg'
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  max_resolution: ''
+  min_resolution: ''
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  max_filesize: ''
+  handler: default
+  handler_settings: {  }
+field_type: image

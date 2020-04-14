@@ -1,0 +1,29 @@
+uuid: 58ab455b-985c-446a-a6fa-264fa344da8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_created_by
+    - node.type.tv
+    - taxonomy.vocabulary.person
+id: node.tv.field_created_by
+field_name: field_created_by
+entity_type: node
+bundle: tv
+label: 'Created by'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      person: person
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

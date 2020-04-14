@@ -1,0 +1,19 @@
+uuid: 111f6d80-b1b4-4bd1-995e-55520cbc14c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_overview
+    - node.type.tv
+id: node.tv.field_overview
+field_name: field_overview
+entity_type: node
+bundle: tv
+label: Overview
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

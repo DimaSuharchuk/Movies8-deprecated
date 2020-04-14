@@ -1,0 +1,65 @@
+uuid: abd75544-e7a7-4332-8353-67efd6e64d8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tv.field_approved
+    - field.field.node.tv.field_cast
+    - field.field.node.tv.field_created_by
+    - field.field.node.tv.field_crew
+    - field.field.node.tv.field_genres
+    - field.field.node.tv.field_imdb_id
+    - field.field.node.tv.field_imdb_rating
+    - field.field.node.tv.field_in_production
+    - field.field.node.tv.field_networks
+    - field.field.node.tv.field_number_of_episodes
+    - field.field.node.tv.field_number_of_seasons
+    - field.field.node.tv.field_original_title
+    - field.field.node.tv.field_overview
+    - field.field.node.tv.field_poster
+    - field.field.node.tv.field_production_companies
+    - field.field.node.tv.field_recommendations
+    - field.field.node.tv.field_runtime
+    - field.field.node.tv.field_seasons
+    - field.field.node.tv.field_similar
+    - field.field.node.tv.field_site
+    - field.field.node.tv.field_tmdb_id
+    - field.field.node.tv.field_trailers
+    - node.type.tv
+  module:
+    - user
+id: node.tv.teaser
+targetEntityType: node
+bundle: tv
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_approved: true
+  field_cast: true
+  field_created_by: true
+  field_crew: true
+  field_genres: true
+  field_imdb_id: true
+  field_imdb_rating: true
+  field_in_production: true
+  field_networks: true
+  field_number_of_episodes: true
+  field_number_of_seasons: true
+  field_original_title: true
+  field_overview: true
+  field_poster: true
+  field_production_companies: true
+  field_recommendations: true
+  field_runtime: true
+  field_seasons: true
+  field_similar: true
+  field_site: true
+  field_tmdb_id: true
+  field_trailers: true
+  langcode: true

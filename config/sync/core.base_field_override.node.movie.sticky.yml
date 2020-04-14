@@ -1,0 +1,22 @@
+uuid: cb0fb993-ef23-4334-b559-b9e00e12eb4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.movie
+id: node.movie.sticky
+field_name: sticky
+entity_type: node
+bundle: movie
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

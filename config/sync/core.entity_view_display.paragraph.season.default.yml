@@ -1,0 +1,81 @@
+uuid: 8f3adf21-e3e7-40d8-901d-d01b3a53aa12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.season.field_episode_count
+    - field.field.paragraph.season.field_episodes
+    - field.field.paragraph.season.field_overview
+    - field.field.paragraph.season.field_poster
+    - field.field.paragraph.season.field_season_number
+    - field.field.paragraph.season.field_title
+    - field.field.paragraph.season.field_tmdb_id
+    - paragraphs.paragraphs_type.season
+  module:
+    - entity_reference_revisions
+id: paragraph.season.default
+targetEntityType: paragraph
+bundle: season
+mode: default
+content:
+  field_episode_count:
+    weight: 5
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_episodes:
+    type: entity_reference_revisions_entity_view
+    weight: 7
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_overview:
+    weight: 3
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_poster:
+    type: entity_reference_entity_view
+    weight: 4
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_season_number:
+    weight: 6
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_title:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_tmdb_id:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden: {  }

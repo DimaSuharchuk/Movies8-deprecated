@@ -1,0 +1,40 @@
+uuid: eeab5bb3-ad0d-4ff4-b219-74d19c22f57d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_episodes
+    - paragraphs.paragraphs_type.episode
+    - paragraphs.paragraphs_type.season
+  module:
+    - entity_reference_revisions
+id: paragraph.season.field_episodes
+field_name: field_episodes
+entity_type: paragraph
+bundle: season
+label: Episodes
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      episode: episode
+    target_bundles_drag_drop:
+      cast_person:
+        weight: 5
+        enabled: false
+      crew_person:
+        weight: 6
+        enabled: false
+      episode:
+        enabled: true
+        weight: 7
+      season:
+        weight: 8
+        enabled: false
+field_type: entity_reference_revisions

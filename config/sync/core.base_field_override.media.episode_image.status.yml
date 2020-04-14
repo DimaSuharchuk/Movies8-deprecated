@@ -1,0 +1,22 @@
+uuid: df0e09b2-0d8c-4d6e-a1db-c74f0d5bbe88
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.episode_image
+id: media.episode_image.status
+field_name: status
+entity_type: media
+bundle: episode_image
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

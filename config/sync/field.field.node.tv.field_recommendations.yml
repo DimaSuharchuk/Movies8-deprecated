@@ -1,0 +1,27 @@
+uuid: 10ed2646-b40d-4452-8235-9c9346b4d058
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recommendations
+    - node.type.tv
+id: node.tv.field_recommendations
+field_name: field_recommendations
+entity_type: node
+bundle: tv
+label: Recommendations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      tv: tv
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

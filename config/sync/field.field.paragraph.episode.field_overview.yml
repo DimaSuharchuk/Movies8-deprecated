@@ -1,0 +1,19 @@
+uuid: 00ee516b-feaa-40eb-8154-4bf1c1027e2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_overview
+    - paragraphs.paragraphs_type.episode
+id: paragraph.episode.field_overview
+field_name: field_overview
+entity_type: paragraph
+bundle: episode
+label: Overview
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

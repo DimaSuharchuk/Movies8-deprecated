@@ -1,0 +1,23 @@
+uuid: 23210932-3c92-4e8e-a479-1247978b5521
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_imdb_rating
+    - node.type.tv
+id: node.tv.field_imdb_rating
+field_name: field_imdb_rating
+entity_type: node
+bundle: tv
+label: 'IMDb rating'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: !!float 0
+  max: !!float 10
+  prefix: ''
+  suffix: ''
+field_type: decimal

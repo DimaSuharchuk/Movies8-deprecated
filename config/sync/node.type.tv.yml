@@ -1,0 +1,17 @@
+uuid: b439e3c0-6366-4732-a112-7d555a3325dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: TV
+type: tv
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false
