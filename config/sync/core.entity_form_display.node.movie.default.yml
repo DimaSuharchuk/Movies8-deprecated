@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.movie.field_release_date
     - field.field.node.movie.field_runtime
     - field.field.node.movie.field_similar
+    - field.field.node.movie.field_site
     - field.field.node.movie.field_tmdb_id
     - field.field.node.movie.field_trailers
     - node.type.movie
@@ -164,6 +165,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_site:
+    weight: 26
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_tmdb_id:
     weight: 2

@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.movie.field_release_date
     - field.field.node.movie.field_runtime
     - field.field.node.movie.field_similar
+    - field.field.node.movie.field_site
     - field.field.node.movie.field_tmdb_id
     - field.field.node.movie.field_trailers
     - node.type.movie
@@ -50,6 +51,7 @@ hidden:
   field_release_date: true
   field_runtime: true
   field_similar: true
+  field_site: true
   field_tmdb_id: true
   field_trailers: true
   langcode: true

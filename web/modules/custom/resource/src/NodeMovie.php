@@ -39,6 +39,8 @@ class NodeMovie extends Node {
    *   Date when the movie saw the world.
    * @param int $field_runtime
    *   Movie duration in minutes.
+   * @param string $field_site
+   *   Official web page or site of the movie.
    * @param int $field_tmdb_id
    *   Unique field contains TMDb ID of entity.
    * @param \Drupal\resource\CollectionMediaTrailer $field_trailers
@@ -61,6 +63,7 @@ class NodeMovie extends Node {
     bool $field_approved,
     DateTime $field_release_date,
     int $field_runtime,
+    string $field_site,
     int $field_tmdb_id,
     CollectionMediaTrailer $field_trailers
   ) {
@@ -79,6 +82,7 @@ class NodeMovie extends Node {
     $this->fields['field_approved'] = $field_approved;
     $this->fields['field_release_date'] = $field_release_date ? $field_release_date->format('Y-m-d') : NULL;
     $this->fields['field_runtime'] = $field_runtime;
+    $this->fields['field_site'] = $field_site;
     $this->fields['field_trailers'] = $field_trailers;
   }
 

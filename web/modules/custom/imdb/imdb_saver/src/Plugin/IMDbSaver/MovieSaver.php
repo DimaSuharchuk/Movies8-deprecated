@@ -48,6 +48,7 @@ class MovieSaver extends IMDbSaverPluginBase {
     $field_overview = $fields['overview'];
     $field_approved = $item->getApprovedStatus();
     $field_runtime = $fields['runtime'];
+    $field_site = $fields['homepage'];
     $field_tmdb_id = $item->getId();
 
     try {
@@ -164,6 +165,7 @@ class MovieSaver extends IMDbSaverPluginBase {
         $field_approved,
         $field_release_date,
         $field_runtime,
+        $field_site,
         $field_tmdb_id,
         $field_trailers
       );

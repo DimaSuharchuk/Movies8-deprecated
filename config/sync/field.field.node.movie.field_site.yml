@@ -1,0 +1,19 @@
+uuid: 91a379ed-64d8-43ab-b760-ada716b0771e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_site
+    - node.type.movie
+id: node.movie.field_site
+field_name: field_site
+entity_type: node
+bundle: movie
+label: Site
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
