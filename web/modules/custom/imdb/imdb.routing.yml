@@ -1,4 +1,4 @@
-imdb.imdb:
+imdb.imdb_add:
   path: '/admin/imdb'
   defaults:
     _form: '\Drupal\imdb\Form\IMDbIDsAddForm'

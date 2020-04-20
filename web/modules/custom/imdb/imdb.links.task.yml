@@ -1,0 +1,5 @@
+imdb.imdb:
+  route_name: imdb.imdb_add
+  base_route: imdb.admin_imdb
+  title: Add
+  weight: 1
