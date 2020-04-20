@@ -22,15 +22,13 @@ class NodeMovie extends Node {
    * @param \Drupal\resource\CollectionTaxonomyGenre $field_genres
    *   List genres this movie belongs to.
    * @param string $field_imdb_id
-   *   IMDb ID, like tt1234567.
-   * @param float $field_imdb_rating
-   *   Movie rating from IMDb.
+   *   IMDb ID, like tt12345678.
    * @param string $field_original_title
    *   The movie's title in English.
    * @param string $field_overview
    *   Movie overview.
    * @param \Drupal\resource\MediaPoster $field_poster
-   *   Poster Media entity.
+   *   Poster of movie.
    * @param \Drupal\resource\CollectionMediaProductionCompany $field_production_companies
    *   Production companies created the movie.
    * @param bool $field_approved
@@ -44,7 +42,7 @@ class NodeMovie extends Node {
    * @param int $field_tmdb_id
    *   Unique field contains TMDb ID of entity.
    * @param \Drupal\resource\CollectionMediaTrailer $field_trailers
-   *   Youtube Media entities.
+   *   Trailers of the movie from Youtube.
    *
    * {@inheritDoc}
    */
@@ -55,7 +53,6 @@ class NodeMovie extends Node {
     CollectionParagraphCrew $field_crew,
     CollectionTaxonomyGenre $field_genres,
     string $field_imdb_id,
-    float $field_imdb_rating,
     string $field_original_title,
     string $field_overview,
     ?MediaPoster $field_poster,
@@ -74,7 +71,6 @@ class NodeMovie extends Node {
     $this->fields['field_crew'] = $field_crew;
     $this->fields['field_genres'] = $field_genres;
     $this->fields['field_imdb_id'] = $field_imdb_id;
-    $this->fields['field_imdb_rating'] = $field_imdb_rating;
     $this->fields['field_original_title'] = $field_original_title;
     $this->fields['field_overview'] = $field_overview;
     $this->fields['field_poster'] = $field_poster;

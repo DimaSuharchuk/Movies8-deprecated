@@ -26,6 +26,9 @@ class TMDbQueue extends IMDbQueuePluginBase {
 
   use StringTranslationTrait;
 
+  /**
+   * @var \Tmdb\Client
+   */
   private $TMDbClient;
 
   public function __construct(array $configuration, $plugin_id, $plugin_definition) {
@@ -45,6 +48,8 @@ class TMDbQueue extends IMDbQueuePluginBase {
    * @throws \Exception
    */
   protected function prepareItem(IMDbQueueItem $itemData): IMDbQueueItem {
+    $fields_data = [];
+
     switch ($itemData->getRequestType()) {
       case IMDbQueueItemRequestType::FIND:
         // Request to API.
@@ -81,17 +86,25 @@ class TMDbQueue extends IMDbQueuePluginBase {
           'language' => $itemData->getLang(),
           'append_to_response' => 'recommendations,similar,videos,credits,external_ids',
         ];
-        $res = $itemData->getRequestType() === IMDbQueueItemRequestType::MOVIE ? $this->TMDbClient->getMoviesApi()
+        $fields_data = $itemData->getRequestType() === IMDbQueueItemRequestType::MOVIE ? $this->TMDbClient->getMoviesApi()
           ->getMovie($itemData->getId(), $options) : $this->TMDbClient->getTvApi()
           ->getTvshow($itemData->getId(), $options);
 
-        // Set response to Queue object.
-        $itemData->setFieldsData($res);
+        if ($itemData->getRequestType() === IMDbQueueItemRequestType::TV) {
+          foreach ($fields_data['seasons'] as $season) {
+            $queueItem = new IMDbQueueItem(
+              IMDbQueueItemRequestType::SEASON(),
+              $fields_data['id'] . '|' . $season['season_number'],
+              $itemData->getLangObject()
+            );
+            $this->createItem($queueItem);
+          }
+        }
 
         // Create queue items for recommendations and similar movies and tv, for approved movies and tv only.
         if ($itemData->getApprovedStatus()) {
           foreach (['recommendations', 'similar'] as $a) {
-            foreach ($res[$a]['results'] as $result) {
+            foreach ($fields_data[$a]['results'] as $result) {
               $queueItem = new IMDbQueueItem(
                 $itemData->getRequestTypeObject(),
                 $result['id'],
@@ -103,7 +116,49 @@ class TMDbQueue extends IMDbQueuePluginBase {
           }
         }
         break;
+
+      case IMDbQueueItemRequestType::SEASON:
+        // Get TV's TMDb ID and season number.
+        [$tv_id, $season_number] = explode('|', $itemData->getId());
+
+        $options = [
+          'language' => $itemData->getLang(),
+        ];
+        $fields_data = $this->TMDbClient->getTvSeasonApi()
+          ->getSeason($tv_id, $season_number, $options);
+
+        // We need to saving IMDb IDs of episodes, add episodes for request to
+        // TMDb API.
+        if ($itemData->getLang() === IMDbQueueItemLanguage::ENG) {
+          foreach ($fields_data['episodes'] as $episode) {
+            // As a rule episodes in season with "zero number", aka "Specials"
+            // haven't IMDb ID.
+            if ($season_number) {
+              $queueItem = new IMDbQueueItem(
+                IMDbQueueItemRequestType::EPISODE_EXTERNAL_IDS(),
+                $itemData->getId() . '|' . $episode['episode_number'],
+                IMDbQueueItemLanguage::ENG()
+              );
+              $this->createItem($queueItem);
+            }
+          }
+        }
+        break;
+
+      case IMDbQueueItemRequestType::EPISODE_EXTERNAL_IDS:
+        // Get TV's TMDb ID, season number and episode number.
+        [
+          $tv_id,
+          $season_number,
+          $episode_number,
+        ] = explode('|', $itemData->getId());
+        $fields_data = $this->TMDbClient->getTvEpisodeApi()
+          ->getExternalIds($tv_id, $season_number, $episode_number);
+        break;
     }
+
+    // Set response to Queue object.
+    $itemData->setFieldsData($fields_data);
 
     return $itemData;
   }

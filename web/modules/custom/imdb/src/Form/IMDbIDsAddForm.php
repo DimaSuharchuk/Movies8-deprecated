@@ -40,15 +40,10 @@ class IMDbIDsAddForm extends FormBase {
     $state = Drupal::service('state');
     /** @var \Drupal\imdb\IMDbQueueManager $imdb_queue_manager */
     $imdb_queue_manager = Drupal::service('plugin.manager.imdb_queue');
-    /** @var \Drupal\imdb\IMDbQueuePluginInterface $tmdb_queue */
-    /** @var \Drupal\imdb\IMDbQueuePluginInterface $omdb_queue */
-    try {
-      $tmdb_queue = $imdb_queue_manager->createInstance('tmdb_queue');
-      $omdb_queue = $imdb_queue_manager->createInstance('omdb_queue');
-    }
-    catch (PluginException $e) {
-      Drupal::messenger()->addError($e->getMessage());
-    }
+    /** @var \Drupal\imdb\Plugin\IMDbQueue\TMDbQueue $tmdb_queue */
+    $tmdb_queue = $imdb_queue_manager->createInstance('tmdb_queue');
+    /** @var \Drupal\imdb\Plugin\IMDbQueue\OMDbQueue $omdb_queue */
+    $omdb_queue = $imdb_queue_manager->createInstance('omdb_queue');
 
     // Check API keys.
     $disabled = FALSE;
@@ -112,17 +107,14 @@ class IMDbIDsAddForm extends FormBase {
     /**
      * Statistics.
      */
-    /** @var \Drupal\node\NodeStorageInterface $node_storage */
-    try {
-      $node_storage = Drupal::entityTypeManager()->getStorage('node');
-    }
-    catch (PluginException $e) {
-      Drupal::messenger()->addError($e->getMessage());
-    }
-    $movies = $node_storage->loadByProperties([
-      'type' => 'movie',
-    ]);
-    $movies_count = count($movies);
+    $finder = Drupal::service('entity_finder');
+
+    $nodes = $finder->findNodes()->execute();
+    $approved_nodes = $finder->findNodes()
+      ->addCondition('field_approved', TRUE)
+      ->execute();
+    $movies = $finder->findNodesMovie()->execute();
+    $tv_shows = $finder->findNodesTv()->execute();
     // Statistics fieldset.
     $form['statistics'] = [
       '#type' => 'details',
@@ -130,34 +122,31 @@ class IMDbIDsAddForm extends FormBase {
       '#open' => TRUE,
     ];
     // Nodes count.
-    // @todo
     $form['statistics']['nodes_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('Nodes count: %count.', [
-        '%count' => '???',
+        '%count' => $nodes ? count($nodes) : 0,
       ]),
     ];
     // Approved nodes count.
-    // @todo
     $form['statistics']['approved_nodes_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('Approved nodes count: %count.', [
-        '%count' => '???',
+        '%count' => $approved_nodes ? count($approved_nodes) : 0,
       ]),
     ];
     // Movies count.
     $form['statistics']['movies_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('Movies count: %count.', [
-        '%count' => $movies_count,
+        '%count' => $movies ? count($movies) : 0,
       ]),
     ];
     // TV count.
-    // @todo
     $form['statistics']['tv_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('TV count: %count.', [
-        '%count' => '???',
+        '%count' => $tv_shows ? count($tv_shows) : 0,
       ]),
     ];
 
@@ -181,9 +170,6 @@ class IMDbIDsAddForm extends FormBase {
 
   /**
    * {@inheritDoc}
-   *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Get IMDb IDs from form.
@@ -202,15 +188,13 @@ class IMDbIDsAddForm extends FormBase {
     }
 
     if ($ids) {
-      /** @var \Drupal\node\NodeStorageInterface $node_storage */
-      $node_storage = Drupal::entityTypeManager()->getStorage('node');
-
       // Search nodes with imdb ids, also node should be approved. Non-approved
       // nodes could be approved later.
-      $nodes = $node_storage->loadByProperties([
-        'field_imdb_id' => $ids,
-        'field_approved' => TRUE,
-      ]);
+      $finder = Drupal::service('entity_finder');
+      $nodes = $finder->findNodes()
+        ->addCondition('field_imdb_id', $ids)
+        ->addCondition('field_approved', TRUE)
+        ->execute();
 
       // Filter new imdb ids from already added nodes with some imdb ids.
       // @todo Check this logic, maybe it's better to add all IDs and check it

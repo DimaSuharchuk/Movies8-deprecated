@@ -5,12 +5,8 @@
  * Module's main file. Provides work with different IMDB APIs.
  */
 
-use Drupal\imdb\IMDbQueueItemRequestType;
-
 /**
  * Implements hook_cron().
- *
- * {@inheritDoc}
  */
 function imdb_cron() {
   /** @var \Drupal\imdb\IMDbQueueManager $imdb_queue_manager */
@@ -19,46 +15,15 @@ function imdb_cron() {
   $tmdb_queue = $imdb_queue_manager->createInstance('tmdb_queue');
 
   if (!$tmdb_queue->isEmpty()) {
-    // Get results from TMDb service.
-    $tmdb_results = $tmdb_queue->getResults();
-
-    /** @var \Drupal\imdb\IMDbQueueItem $result */
-    foreach ($tmdb_results as $result) {
-      switch ($result->getRequestType()) {
-        case IMDbQueueItemRequestType::FIND:
-          // Nothing to save for this type.
-          break;
-
-        case IMDbQueueItemRequestType::MOVIE:
-          /**
-           * @see \Drupal\imdb_saver\Plugin\QueueWorker\TMDbSaver
-           * @see \Drupal\imdb_saver\Plugin\IMDbSaver\MovieSaver
-           */
-          Drupal::queue('tmdb_result_saver')->createItem([
-            'plugin_id' => 'movie_saver',
-            'item' => $result,
-          ]);
-          break;
-
-        case IMDbQueueItemRequestType::TV:
-          /**
-           * @see \Drupal\imdb_saver\Plugin\QueueWorker\TMDbSaver
-           * @see \Drupal\imdb_saver\Plugin\IMDbSaver\TvSaver
-           */
-          Drupal::queue('tmdb_result_saver')->createItem([
-            'plugin_id' => 'tv_saver',
-            'item' => $result,
-          ]);
-          break;
-
-        default:
-          $message = t("ResourceSaver try to save node with undefined type %type.", [
-            '%type' => $result->getRequestType(),
-          ]);
-          Drupal::messenger()->addError($message);
-          Drupal::logger('imdb_cron:' . __LINE__)->error($message);
-          return;
-      }
+    // Get results from TMDb queue and set them to "Saver" queue.
+    /** @var \Drupal\imdb\IMDbQueueItem $item */
+    foreach ($tmdb_queue->getResults() as $item) {
+      /**
+       * @see \Drupal\imdb_saver\Plugin\QueueWorker\TMDbSaver
+       */
+      Drupal::queue('tmdb_result_saver')->createItem([
+        'item' => $item,
+      ]);
     }
   }
 
@@ -77,7 +42,8 @@ function imdb_cron() {
 /**
  * Implements hook_toolbar_alter().
  *
- * {@inheritDoc}
+ * @param $items
+ *   Associative array of toolbar menu definitions returned from hook_toolbar().
  */
 function imdb_toolbar_alter(&$items) {
   $items['administration']['#attached']['library'][] = 'imdb/imdb.menu';

@@ -14,8 +14,8 @@ entity_type: paragraph
 bundle: season
 label: Episodes
 description: ''
-required: true
-translatable: false
+required: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

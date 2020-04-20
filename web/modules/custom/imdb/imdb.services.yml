@@ -4,3 +4,6 @@ services:
   plugin.manager.imdb_queue:
     class: Drupal\imdb\IMDbQueueManager
     parent: default_plugin_manager
+  entity_finder:
+    class: Drupal\imdb\EntityFinder
+    arguments: ['@entity_type.manager']

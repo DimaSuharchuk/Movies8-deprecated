@@ -35,7 +35,7 @@ bundle: tv
 mode: default
 content:
   field_approved:
-    weight: 114
+    weight: 14
     label: above
     settings:
       format: default
@@ -45,7 +45,7 @@ content:
     type: boolean
     region: content
   field_cast:
-    weight: 118
+    weight: 18
     label: above
     settings:
       view_mode: default
@@ -54,7 +54,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_created_by:
-    weight: 101
+    weight: 2
     label: above
     settings:
       link: true
@@ -62,7 +62,7 @@ content:
     type: entity_reference_label
     region: content
   field_crew:
-    weight: 119
+    weight: 19
     label: above
     settings:
       view_mode: default
@@ -71,7 +71,7 @@ content:
     type: entity_reference_revisions_entity_view
     region: content
   field_genres:
-    weight: 103
+    weight: 4
     label: above
     settings:
       link: true
@@ -79,7 +79,7 @@ content:
     type: entity_reference_label
     region: content
   field_imdb_id:
-    weight: 121
+    weight: 21
     label: above
     settings:
       link_to_entity: false
@@ -87,7 +87,7 @@ content:
     type: string
     region: content
   field_imdb_rating:
-    weight: 120
+    weight: 20
     label: above
     settings:
       thousand_separator: ''
@@ -98,7 +98,7 @@ content:
     type: number_decimal
     region: content
   field_in_production:
-    weight: 106
+    weight: 7
     label: above
     settings:
       format: default
@@ -109,7 +109,7 @@ content:
     region: content
   field_networks:
     type: entity_reference_entity_view
-    weight: 107
+    weight: 8
     label: above
     settings:
       view_mode: default
@@ -117,7 +117,7 @@ content:
     third_party_settings: {  }
     region: content
   field_number_of_episodes:
-    weight: 109
+    weight: 10
     label: above
     settings:
       thousand_separator: ''
@@ -126,7 +126,7 @@ content:
     type: number_integer
     region: content
   field_number_of_seasons:
-    weight: 108
+    weight: 9
     label: above
     settings:
       thousand_separator: ''
@@ -135,7 +135,7 @@ content:
     type: number_integer
     region: content
   field_original_title:
-    weight: 110
+    weight: 11
     label: above
     settings:
       link_to_entity: false
@@ -143,22 +143,23 @@ content:
     type: string
     region: content
   field_overview:
-    weight: 111
+    weight: 12
     label: above
     settings: {  }
     third_party_settings: {  }
     type: basic_string
     region: content
   field_poster:
-    weight: 112
+    weight: 1
     label: above
     settings:
       link: true
+      view_mode: default
     third_party_settings: {  }
-    type: entity_reference_label
+    type: entity_reference_entity_view
     region: content
   field_production_companies:
-    weight: 113
+    weight: 13
     label: above
     settings:
       link: true
@@ -166,7 +167,7 @@ content:
     type: entity_reference_label
     region: content
   field_recommendations:
-    weight: 115
+    weight: 15
     label: above
     settings:
       link: true
@@ -174,7 +175,7 @@ content:
     type: entity_reference_label
     region: content
   field_runtime:
-    weight: 102
+    weight: 3
     label: above
     settings:
       thousand_separator: ''
@@ -184,7 +185,7 @@ content:
     region: content
   field_seasons:
     type: entity_reference_revisions_entity_view
-    weight: 122
+    weight: 22
     label: above
     settings:
       view_mode: default
@@ -192,7 +193,7 @@ content:
     third_party_settings: {  }
     region: content
   field_similar:
-    weight: 116
+    weight: 16
     label: above
     settings:
       link: true
@@ -200,7 +201,7 @@ content:
     type: entity_reference_label
     region: content
   field_site:
-    weight: 104
+    weight: 5
     label: above
     settings:
       link_to_entity: false
@@ -208,7 +209,7 @@ content:
     type: string
     region: content
   field_tmdb_id:
-    weight: 105
+    weight: 6
     label: above
     settings:
       thousand_separator: ''
@@ -217,7 +218,7 @@ content:
     type: number_integer
     region: content
   field_trailers:
-    weight: 117
+    weight: 17
     label: above
     settings:
       link: true
@@ -225,9 +226,9 @@ content:
     type: entity_reference_label
     region: content
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
 hidden:
   langcode: true

@@ -3,6 +3,7 @@
 namespace Drupal\resource;
 
 use Drupal;
+use Drupal\Component\Plugin\Exception\PluginException;
 use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\imdb\IMDbQueueItemLanguage;
@@ -62,7 +63,7 @@ abstract class ResourceBase implements ResourceInterface {
   /**
    * @var ContentEntityInterface
    */
-  protected $entity;
+  protected $entity = NULL;
 
   /**
    * We set language of child entities same as parent has, but some entities
@@ -78,8 +79,7 @@ abstract class ResourceBase implements ResourceInterface {
   /**
    * ResourceBase constructor.
    *
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   * @throws PluginException
    */
   public function __construct() {
     $this->storage = Drupal::entityTypeManager()->getStorage($this->type);
@@ -111,7 +111,13 @@ abstract class ResourceBase implements ResourceInterface {
     // Find entity by unique field value, for example by TMDb ID.
     // We must not keep the same entity twice.
     if ($this->unique_field) {
-      $this->entity = $this->find();
+      $finder = Drupal::service('entity_finder');
+      $this->entity = $finder
+        ->findEntities($this->type)
+        ->byBundle($this->bundle)
+        ->addCondition($this->unique_field, $this->fields[$this->unique_field])
+        ->reduce()
+        ->execute();
     }
 
     if ($this->entity) {
@@ -170,20 +176,6 @@ abstract class ResourceBase implements ResourceInterface {
     $this->entity->save();
 
     return $this->entity;
-  }
-
-  /**
-   * Try to find entity by some unique field defined in entity. The field is
-   * "field_tmdb_id" in the main.
-   *
-   * @return ContentEntityInterface|null
-   */
-  protected function find(): ?ContentEntityInterface {
-    $entities = $this->storage->loadByProperties([
-      $this->unique_field => $this->fields[$this->unique_field],
-    ]);
-
-    return $entities ? reset($entities) : NULL;
   }
 
   /**

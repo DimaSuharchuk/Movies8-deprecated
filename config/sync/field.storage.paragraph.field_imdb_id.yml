@@ -9,7 +9,7 @@ field_name: field_imdb_id
 entity_type: paragraph
 type: string
 settings:
-  max_length: 9
+  max_length: 10
   is_ascii: false
   case_sensitive: false
 module: core

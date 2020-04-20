@@ -425,6 +425,7 @@ namespace PHPSTORM_META {
       'plugin.manager.image.effect' => '\Drupal\image\ImageEffectManager',
       'imdb.helper' => '\Drupal\imdb\IMDbHelper',
       'plugin.manager.imdb_queue' => '\Drupal\imdb\IMDbQueueManager',
+      'entity_finder' => '\Drupal\imdb\EntityFinder',
       'plugin.manager.imdb_saver' => '\Drupal\imdb_saver\IMDbSaverManager',
       'plugin.manager.language_negotiation_method' => '\Drupal\language\LanguageNegotiationMethodManager',
       'language_negotiator' => '\Drupal\language\LanguageNegotiator',
