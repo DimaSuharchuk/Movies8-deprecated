@@ -1,0 +1,7 @@
+remover.form:
+  path: '/admin/imdb/remover'
+  defaults:
+    _form: '\Drupal\remover\Form\RemoverForm'
+    _title: 'Remover'
+  requirements:
+    _permission: 'administer site configuration'

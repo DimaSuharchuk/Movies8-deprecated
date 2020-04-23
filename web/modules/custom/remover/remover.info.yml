@@ -1,0 +1,7 @@
+name: Remover
+description: Remove any entities in site.
+type: module
+package: Custom
+core: 8.x
+dependencies:
+  - imdb

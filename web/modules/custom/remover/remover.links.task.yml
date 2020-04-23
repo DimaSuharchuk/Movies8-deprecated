@@ -1,0 +1,5 @@
+remover.remove_tab:
+  route_name: remover.form
+  base_route: imdb.admin_imdb
+  title: Remove
+  weight: 2

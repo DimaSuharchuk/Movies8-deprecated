@@ -469,6 +469,7 @@ namespace PHPSTORM_META {
       'path_alias.manager' => '\Drupal\path_alias\AliasManager',
       'path_alias.repository' => '\Drupal\path_alias\AliasRepository',
       'path_alias.whitelist' => '\Drupal\path_alias\AliasWhitelist',
+      'remover.thread_manager' => '\Drupal\remover\RemoverThreadManager',
       'access_check.cron' => '\Drupal\system\Access\CronAccessCheck',
       'access_check.db_update' => '\Drupal\system\Access\DbUpdateAccessCheck',
       'system.manager' => '\Drupal\system\SystemManager',

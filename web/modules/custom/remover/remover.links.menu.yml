@@ -1,0 +1,6 @@
+remover.remove_tab:
+  title: Remover
+  description: 'Remover functionality.'
+  parent: imdb.admin_imdb
+  route_name: remover.form
+  weight: 1

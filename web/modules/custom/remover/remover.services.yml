@@ -1,0 +1,3 @@
+services:
+  remover.thread_manager:
+    class: Drupal\remover\RemoverThreadManager
