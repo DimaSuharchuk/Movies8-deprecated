@@ -27,7 +27,7 @@ class RecommendedSimilarFieldsUpdater extends QueueWorkerBase {
     $finder = Drupal::service('entity_finder');
 
     /** @var \Drupal\node\Entity\Node $node */
-    $node = $finder->findNodes()->load($data['nid']);
+    $node = $finder->findNodes()->loadById($data['nid']);
 
     // This movie or TV already done.
     if ($node->get('field_recommendations')->getValue()
@@ -48,6 +48,7 @@ class RecommendedSimilarFieldsUpdater extends QueueWorkerBase {
       $recommendations_nodes = $finder->findNodes()
         ->byBundle($item->getRequestType())
         ->byTmdbIds($recommendations_ids)
+        ->loadEntities()
         ->execute();
     }
     try {
@@ -70,6 +71,7 @@ class RecommendedSimilarFieldsUpdater extends QueueWorkerBase {
           $similar_nodes = $finder->findNodes()
             ->byBundle($item->getRequestType())
             ->byTmdbIds($similar_ids)
+            ->loadEntities()
             ->execute();
         }
         // This movie or TV can't be saved before all dependencies not saved.

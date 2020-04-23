@@ -109,12 +109,6 @@ class IMDbIDsAddForm extends FormBase {
      */
     $finder = Drupal::service('entity_finder');
 
-    $nodes = $finder->findNodes()->execute();
-    $approved_nodes = $finder->findNodes()
-      ->addCondition('field_approved', TRUE)
-      ->execute();
-    $movies = $finder->findNodesMovie()->execute();
-    $tv_shows = $finder->findNodesTv()->execute();
     // Statistics fieldset.
     $form['statistics'] = [
       '#type' => 'details',
@@ -125,28 +119,31 @@ class IMDbIDsAddForm extends FormBase {
     $form['statistics']['nodes_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('Nodes count: %count.', [
-        '%count' => $nodes ? count($nodes) : 0,
+        '%count' => $finder->findNodes()->count()->execute(),
       ]),
     ];
     // Approved nodes count.
     $form['statistics']['approved_nodes_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('Approved nodes count: %count.', [
-        '%count' => $approved_nodes ? count($approved_nodes) : 0,
+        '%count' => $finder->findNodes()
+          ->addCondition('field_approved', TRUE)
+          ->count()
+          ->execute(),
       ]),
     ];
     // Movies count.
     $form['statistics']['movies_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('Movies count: %count.', [
-        '%count' => $movies ? count($movies) : 0,
+        '%count' => $finder->findNodesMovie()->count()->execute(),
       ]),
     ];
     // TV count.
     $form['statistics']['tv_count'] = [
       '#type' => 'item',
       '#markup' => $this->t('TV count: %count.', [
-        '%count' => $tv_shows ? count($tv_shows) : 0,
+        '%count' => $finder->findNodesTv()->count()->execute(),
       ]),
     ];
 
@@ -194,6 +191,7 @@ class IMDbIDsAddForm extends FormBase {
       $nodes = $finder->findNodes()
         ->addCondition('field_imdb_id', $ids)
         ->addCondition('field_approved', TRUE)
+        ->loadEntities()
         ->execute();
 
       // Filter new imdb ids from already added nodes with some imdb ids.

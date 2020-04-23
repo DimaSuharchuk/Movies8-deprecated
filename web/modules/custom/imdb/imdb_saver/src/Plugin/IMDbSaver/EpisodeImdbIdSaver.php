@@ -21,7 +21,7 @@ class EpisodeImdbIdSaver extends IMDbSaverPluginBase {
   public function save(IMDbQueueItem $item): void {
     // Get TV's TMDb ID, season number and episode number.
     [
-      $tv_id,
+      $tv_tmdb_id,
       $season_number,
       $episode_number,
     ] = explode('|', $item->getId());
@@ -29,14 +29,15 @@ class EpisodeImdbIdSaver extends IMDbSaverPluginBase {
     // Find episode and set IMDb ID into the field.
     $finder = Drupal::service('entity_finder');
     /** @var \Drupal\node\Entity\Node $tv_node */
-    $tv_node = $finder
+    $tv_node_id = $finder
       ->findNodesTv()
-      ->byTmdbId($tv_id)
+      ->byTmdbId($tv_tmdb_id)
       ->reduce()
       ->execute();
     /** @var \Drupal\paragraphs\Entity\Paragraph $season */
     $episode = $finder
-      ->findParagraphEpisode($tv_node->id(), $season_number, $episode_number)
+      ->findParagraphEpisode($tv_node_id, $season_number, $episode_number)
+      ->loadEntities()
       ->reduce()
       ->execute();
 

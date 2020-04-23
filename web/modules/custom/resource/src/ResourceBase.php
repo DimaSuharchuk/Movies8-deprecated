@@ -116,6 +116,7 @@ abstract class ResourceBase implements ResourceInterface {
         ->findEntities($this->type)
         ->byBundle($this->bundle)
         ->addCondition($this->unique_field, $this->fields[$this->unique_field])
+        ->loadEntities()
         ->reduce()
         ->execute();
     }
