@@ -27,6 +27,7 @@ class MovieSaver extends IMDbSaverPluginBase {
     try {
       $movie = new NodeMovie(
         $fields['title'],
+        $item->getApprovedStatus(),
         $this->extractCast($item),
         $this->extractBelongsToCollection($item),
         $this->extractCrew($item),
@@ -36,7 +37,6 @@ class MovieSaver extends IMDbSaverPluginBase {
         $fields['overview'],
         $this->extractPoster($item, $fields['title']),
         $this->extractProductionCompanies($item),
-        $item->getApprovedStatus(),
         new DateTime($fields['release_date']),
         $fields['runtime'],
         $fields['homepage'],

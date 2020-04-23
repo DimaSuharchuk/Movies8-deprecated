@@ -13,6 +13,8 @@ class NodeMovie extends Node {
    *
    * @param string $title
    *   Node title.
+   * @param bool $field_approved
+   *   TRUE, if I approve this movie.
    * @param \Drupal\resource\CollectionParagraphCast $field_cast
    *   List of persons who starred in the movie.
    * @param \Drupal\resource\TaxonomyMovieCollection|null $field_collection
@@ -31,8 +33,6 @@ class NodeMovie extends Node {
    *   Poster of movie.
    * @param \Drupal\resource\CollectionMediaProductionCompany $field_production_companies
    *   Production companies created the movie.
-   * @param bool $field_approved
-   *   TRUE, if I approve this movie.
    * @param \DateTime $field_release_date
    *   Date when the movie saw the world.
    * @param int $field_runtime
@@ -48,6 +48,7 @@ class NodeMovie extends Node {
    */
   public function __construct(
     string $title,
+    bool $field_approved,
     CollectionParagraphCast $field_cast,
     ?TaxonomyMovieCollection $field_collection,
     CollectionParagraphCrew $field_crew,
@@ -57,7 +58,6 @@ class NodeMovie extends Node {
     string $field_overview,
     ?MediaPoster $field_poster,
     CollectionMediaProductionCompany $field_production_companies,
-    bool $field_approved,
     DateTime $field_release_date,
     int $field_runtime,
     string $field_site,
@@ -66,6 +66,7 @@ class NodeMovie extends Node {
   ) {
     parent::__construct($title, $field_tmdb_id);
 
+    $this->fields['field_approved'] = $field_approved;
     $this->fields['field_cast'] = $field_cast;
     $this->fields['field_collection'] = $field_collection;
     $this->fields['field_crew'] = $field_crew;
@@ -75,7 +76,6 @@ class NodeMovie extends Node {
     $this->fields['field_overview'] = $field_overview;
     $this->fields['field_poster'] = $field_poster;
     $this->fields['field_production_companies'] = $field_production_companies;
-    $this->fields['field_approved'] = $field_approved;
     $this->fields['field_release_date'] = $field_release_date ? $field_release_date->format('Y-m-d') : NULL;
     $this->fields['field_runtime'] = $field_runtime;
     $this->fields['field_site'] = $field_site;
