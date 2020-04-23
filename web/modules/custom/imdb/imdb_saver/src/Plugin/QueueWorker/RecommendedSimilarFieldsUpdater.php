@@ -4,7 +4,9 @@ namespace Drupal\imdb_saver\Plugin\QueueWorker;
 
 use Drupal;
 use Drupal\Core\Queue\QueueWorkerBase;
-use Drupal\imdb_saver\SaveLater;
+use Drupal\Core\Queue\SuspendQueueException;
+use Drupal\imdb\EntityFinder;
+use Drupal\imdb\IMDbQueueItem;
 
 /**
  * Process a queue of movies and TVs: update recommended and similar fields.
@@ -36,69 +38,71 @@ class RecommendedSimilarFieldsUpdater extends QueueWorkerBase {
       return;
     }
 
-    /** @var \Drupal\imdb\IMDbQueueItem $item */
-    $item = $data['item'];
-    $fields = $item->getFieldsData();
+    // If all are good - update fields and save the node.
+    foreach ($this->getRecommendationsNodes($data['item'], $finder) as $recommendations_node) {
+      $node->{'field_recommendations'}->appendItem($recommendations_node);
+    }
+    foreach ($this->getSimilarNodes($data['item'], $finder) as $similar_node) {
+      $node->{'field_similar'}->appendItem($similar_node);
+    }
+    $node->set('field_approved', TRUE);
+    $node->save();
+  }
 
-    $recommendations_nodes = [];
+  /**
+   * @param \Drupal\imdb\IMDbQueueItem $item
+   * @param \Drupal\imdb\EntityFinder $finder
+   *
+   * @return \Drupal\Core\Entity\EntityInterface[]
+   * @throws SuspendQueueException
+   */
+  private function getRecommendationsNodes(IMDbQueueItem $item, EntityFinder $finder) {
+    return $this->getNodes('recommendations', $item, $finder);
+  }
+
+  /**
+   * @param \Drupal\imdb\IMDbQueueItem $item
+   * @param \Drupal\imdb\EntityFinder $finder
+   *
+   * @return \Drupal\Core\Entity\EntityInterface[]
+   * @throws SuspendQueueException
+   */
+  private function getSimilarNodes(IMDbQueueItem $item, EntityFinder $finder) {
+    return $this->getNodes('similar', $item, $finder);
+  }
+
+  /**
+   * Helper method search nodes by TMDb IDs from TMDb response's array
+   * "recommended" or "similar", compare exist nodes with TMDb ids and throws
+   * exception if nodes not created yet.
+   *
+   * @param string $type
+   *   "recommendations" or "similar", it appears from TMDb response.
+   * @param \Drupal\imdb\IMDbQueueItem $item
+   * @param \Drupal\imdb\EntityFinder $finder
+   *
+   * @return \Drupal\Core\Entity\EntityInterface[]
+   * @throws SuspendQueueException
+   */
+  private function getNodes(string $type, IMDbQueueItem $item, EntityFinder $finder) {
+    $nodes = [];
     // Collect IDs from IMDbQueueItem.
-    $recommendations_ids = array_column($fields['recommendations']['results'], 'id');
-    if ($recommendations_ids) {
+    $tmdb_ids = array_column($item->getFieldsData()[$type]['results'], 'id');
+    if ($tmdb_ids) {
       // Search already saved nodes.
-      $recommendations_nodes = $finder->findNodes()
+      $nodes = $finder->findNodes()
         ->byBundle($item->getRequestType())
-        ->byTmdbIds($recommendations_ids)
+        ->byTmdbIds($tmdb_ids)
         ->loadEntities()
         ->execute();
     }
-    try {
-      // This movie or TV can't be saved before all dependencies not saved.
-      if (!is_array($recommendations_nodes) || count($recommendations_ids) !== count($recommendations_nodes)) {
-        // Try to save it later. Add in the end of queue.
-        throw new SaveLater();
-      }
-      else {
-        // To prevent useless search for similar nodes if recommended not
-        // added, we search for them if all recommended movies already added
-        // here.
-        // Copy-paste a bit...
+    // This movie or TV can't be saved before all dependencies not saved.
+    if (!is_array($nodes) || count($tmdb_ids) !== count($nodes)) {
+      // Try to save it later. Suspend queue.
+      throw new SuspendQueueException();
+    }
 
-        $similar_nodes = [];
-        // Collect IDs from IMDbQueueItem.
-        $similar_ids = array_column($fields['similar']['results'], 'id');
-        if ($similar_ids) {
-          // Search already saved nodes.
-          $similar_nodes = $finder->findNodes()
-            ->byBundle($item->getRequestType())
-            ->byTmdbIds($similar_ids)
-            ->loadEntities()
-            ->execute();
-        }
-        // This movie or TV can't be saved before all dependencies not saved.
-        if (!is_array($similar_nodes) || count($similar_ids) !== count($similar_nodes)) {
-          // Try to save it later. Add in the end of queue.
-          throw new SaveLater();
-        }
-        else {
-          // If all are good - update fields and save the node.
-          foreach ($recommendations_nodes as $recommendations_node) {
-            $node->{'field_recommendations'}->appendItem($recommendations_node);
-          }
-          foreach ($similar_nodes as $similar_node) {
-            $node->{'field_similar'}->appendItem($similar_node);
-          }
-          $node->set('field_approved', TRUE);
-          $node->save();
-        }
-      }
-    }
-    catch (SaveLater $_) {
-      // Try to save later in same worker.
-      Drupal::queue('recommended_similar_fields_updater')->createItem([
-        'nid' => $data['nid'],
-        'item' => $item,
-      ]);
-    }
+    return $nodes;
   }
 
 }
