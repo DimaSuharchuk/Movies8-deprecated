@@ -14,5 +14,5 @@ third_party_settings:
 id: media.network
 target_entity_type_id: media
 target_bundle: network
-default_langcode: site_default
+default_langcode: en
 language_alterable: false
