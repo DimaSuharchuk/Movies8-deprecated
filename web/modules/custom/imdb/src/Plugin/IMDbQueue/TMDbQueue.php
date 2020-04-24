@@ -102,16 +102,20 @@ class TMDbQueue extends IMDbQueuePluginBase {
         }
 
         // Create queue items for recommendations and similar movies and tv, for approved movies and tv only.
-        if ($itemData->getApprovedStatus()) {
+        if ($itemData->getApprovedStatus() && $itemData->getLang() === IMDbQueueItemLanguage::ENG) {
           foreach (['recommendations', 'similar'] as $a) {
             foreach ($fields_data[$a]['results'] as $result) {
-              $queueItem = new IMDbQueueItem(
-                $itemData->getRequestTypeObject(),
-                $result['id'],
-                $itemData->getLangObject()
-              );
-              $queueItem->setApprovedStatus(FALSE);
-              $this->createItem($queueItem);
+              $node_bundle = $itemData->getRequestTypeObject();
+              $tmdb_id = $result['id'];
+              // For each language.
+              foreach (IMDbQueueItemLanguage::members() as $lang) {
+                $queueItem = new IMDbQueueItem(
+                  $node_bundle,
+                  $tmdb_id,
+                  $lang
+                );
+                $this->createItem($queueItem);
+              }
             }
           }
         }
