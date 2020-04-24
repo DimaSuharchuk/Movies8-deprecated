@@ -56,13 +56,13 @@ abstract class File extends ResourceBase {
     // Prepare directory.
     $file_system->prepareDirectory($this->directory, FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
     // Save file.
-    $image_name = $file_system->basename($this->file_path);
-    $filepath = $file_system->saveData($file_data, "{$this->directory}{$image_name}", FileSystemInterface::EXISTS_REPLACE);
+    $filename = $this->getFileName();
+    $filepath = $file_system->saveData($file_data, "{$this->directory}{$filename}", FileSystemInterface::EXISTS_REPLACE);
     // Register file in Drupal.
     /** @var FileInterface $file */
     $file = $this->newEntity();
     $file->setFileUri($filepath);
-    $file->setFilename($image_name);
+    $file->setFilename($filename);
     $file->setMimeType(Drupal::service('file.mime_type.guesser')
       ->guess($this->file_path));
     $file->save();
@@ -78,6 +78,15 @@ abstract class File extends ResourceBase {
   public function setDirectory(string $directory): self {
     $this->directory = $directory ? "public://{$directory}/" : 'public://';
     return $this;
+  }
+
+  /**
+   * @return string
+   */
+  public function getFileName() {
+    /** @var FileSystemInterface $file_system */
+    $file_system = Drupal::service('file_system');
+    return $file_system->basename($this->file_path);
   }
 
 }

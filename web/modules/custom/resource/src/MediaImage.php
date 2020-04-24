@@ -7,6 +7,8 @@ use Drupal\Core\Entity\EntityFieldManagerInterface;
 
 abstract class MediaImage extends Media {
 
+  protected $unique_field = 'name';
+
   /**
    * Image's alternative text.
    *
@@ -43,12 +45,12 @@ abstract class MediaImage extends Media {
     $directory = $fields_definitions['field_media_image']->getSetting('file_directory');
 
     $this->fields['field_media_image'] = $field_media_image->setDirectory($directory);
+    $this->fields['name'] = $name ?: $field_media_image->getFileName();
     $this->alt = $alt;
     $this->title = $title;
   }
 
-  public function setAllNameAttributes(string $name): self {
-    $this->fields['name'] = $name;
+  public function setImageAttributes(string $name): self {
     $this->alt = $name;
     $this->title = $name;
     return $this;

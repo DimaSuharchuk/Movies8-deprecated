@@ -19,7 +19,7 @@ class TaxonomyPerson extends Taxonomy {
   public function __construct(string $name, int $field_tmdb_id, ?MediaProfile $field_profile) {
     parent::__construct($name, $field_tmdb_id);
 
-    $this->fields['field_profile'] = !$field_profile ?: $field_profile->setAllNameAttributes($name);
+    $this->fields['field_profile'] = !$field_profile ?: $field_profile->setImageAttributes($name);
   }
 
 }

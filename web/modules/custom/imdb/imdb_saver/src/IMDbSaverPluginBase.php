@@ -67,7 +67,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
     if ($person['profile_path']) {
       $profile_media = (new MediaProfile(
         new FileImageTMDb($person['profile_path'], 500)
-      ))->setAllNameAttributes($person['name']);
+      ))->setImageAttributes($person['name']);
     }
 
     return new TaxonomyPerson(
@@ -140,7 +140,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
           ->add((new MediaProductionCompany(
             $production_company['id'],
             new FileImageTMDb($production_company['logo_path'], 200)
-          ))->setAllNameAttributes($production_company['name']));
+          ))->setImageAttributes($production_company['name']));
       }
     }
 
@@ -233,7 +233,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
           ->add((new MediaNetwork(
             $network['id'],
             new FileImageTMDb($network['logo_path'], 200)
-          ))->setAllNameAttributes($network['name']));
+          ))->setImageAttributes($network['name']));
       }
     }
 
@@ -279,7 +279,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
   private function createPosterFromPath(?string $remote_image_path, string $title): ?MediaPoster {
     return $remote_image_path ? (new MediaPoster(
       new FileImageTMDb($remote_image_path, 400)
-    ))->setAllNameAttributes($title) : NULL;
+    ))->setImageAttributes($title) : NULL;
   }
 
   /**
@@ -317,7 +317,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
   protected function extractEpisodeImage(?string $remote_image_path, string $title): ?MediaEpisodeImage {
     return $remote_image_path ? (new MediaEpisodeImage(
       new FileImageTMDb($remote_image_path, 500)
-    ))->setAllNameAttributes($title) : NULL;
+    ))->setImageAttributes($title) : NULL;
   }
 
   /**
