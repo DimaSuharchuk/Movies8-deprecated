@@ -1,0 +1,23 @@
+uuid: 1ff5021f-c032-4824-99d7-8eb919c1b42a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_tmdb_id
+    - taxonomy.vocabulary.network
+id: taxonomy_term.network.field_tmdb_id
+field_name: field_tmdb_id
+entity_type: taxonomy_term
+bundle: network
+label: 'TMDb ID'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

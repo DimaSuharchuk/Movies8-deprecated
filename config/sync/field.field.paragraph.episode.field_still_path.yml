@@ -1,0 +1,23 @@
+uuid: dbcdd28e-ab0a-4245-a805-f5c02e2d2ff1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_still_path
+    - paragraphs.paragraphs_type.episode
+  module:
+    - imdb
+id: paragraph.episode.field_still_path
+field_name: field_still_path
+entity_type: paragraph
+bundle: episode
+label: 'Still path'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image

@@ -16,7 +16,7 @@ dependencies:
     - field.field.node.tv.field_number_of_seasons
     - field.field.node.tv.field_original_title
     - field.field.node.tv.field_overview
-    - field.field.node.tv.field_poster
+    - field.field.node.tv.field_poster_path
     - field.field.node.tv.field_production_companies
     - field.field.node.tv.field_recommendations
     - field.field.node.tv.field_runtime
@@ -27,6 +27,7 @@ dependencies:
     - field.field.node.tv.field_trailers
     - node.type.tv
   module:
+    - imdb
     - media_library
     - paragraphs
 id: node.tv.default
@@ -114,11 +115,14 @@ content:
     type: boolean_checkbox
     region: content
   field_networks:
-    type: media_library_widget
-    weight: 127
+    weight: 145
     settings:
-      media_types: {  }
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_number_of_episodes:
     weight: 129
@@ -150,19 +154,21 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
-  field_poster:
-    weight: 132
-    settings:
-      media_types: {  }
+  field_poster_path:
+    weight: 144
+    settings: {  }
     third_party_settings: {  }
-    type: media_library_widget
+    type: tmdb_image_textfield
     region: content
   field_production_companies:
-    weight: 133
+    weight: 143
     settings:
-      media_types: {  }
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
-    type: media_library_widget
+    type: entity_reference_autocomplete
     region: content
   field_recommendations:
     weight: 135

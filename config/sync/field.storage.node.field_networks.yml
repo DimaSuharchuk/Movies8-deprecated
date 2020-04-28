@@ -1,16 +1,16 @@
-uuid: fcd6a0c8-998c-486b-b6da-8b38c4d87826
+uuid: 3bc446b9-c51a-4cfb-93b9-662054a05550
 langcode: en
 status: true
 dependencies:
   module:
-    - media
     - node
+    - taxonomy
 id: node.field_networks
 field_name: field_networks
 entity_type: node
 type: entity_reference
 settings:
-  target_type: media
+  target_type: taxonomy_term
 module: core
 locked: false
 cardinality: -1

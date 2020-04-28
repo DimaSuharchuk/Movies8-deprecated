@@ -1,11 +1,11 @@
-uuid: 2ed58bba-973d-4a05-be1b-63b136ec2e90
+uuid: 17cd6660-2961-4669-af19-56db5ef2aba0
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_production_companies
-    - media.type.production_company
     - node.type.movie
+    - taxonomy.vocabulary.production_company
 id: node.movie.field_production_companies
 field_name: field_production_companies
 entity_type: node
@@ -17,12 +17,13 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:media'
+  handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
       production_company: production_company
     sort:
-      field: _none
+      field: name
+      direction: asc
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

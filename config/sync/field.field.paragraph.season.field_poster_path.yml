@@ -1,0 +1,23 @@
+uuid: 099f8c20-9a04-424a-9347-199fe106f45b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poster_path
+    - paragraphs.paragraphs_type.season
+  module:
+    - imdb
+id: paragraph.season.field_poster_path
+field_name: field_poster_path
+entity_type: paragraph
+bundle: season
+label: 'Poster path'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image

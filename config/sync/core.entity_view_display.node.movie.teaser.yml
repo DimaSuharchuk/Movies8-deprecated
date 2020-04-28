@@ -13,7 +13,7 @@ dependencies:
     - field.field.node.movie.field_imdb_rating
     - field.field.node.movie.field_original_title
     - field.field.node.movie.field_overview
-    - field.field.node.movie.field_poster
+    - field.field.node.movie.field_poster_path
     - field.field.node.movie.field_production_companies
     - field.field.node.movie.field_recommendations
     - field.field.node.movie.field_release_date
@@ -45,7 +45,7 @@ hidden:
   field_imdb_rating: true
   field_original_title: true
   field_overview: true
-  field_poster: true
+  field_poster_path: true
   field_production_companies: true
   field_recommendations: true
   field_release_date: true

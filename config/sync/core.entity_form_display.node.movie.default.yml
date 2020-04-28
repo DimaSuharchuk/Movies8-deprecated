@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.movie.field_imdb_rating
     - field.field.node.movie.field_original_title
     - field.field.node.movie.field_overview
-    - field.field.node.movie.field_poster
+    - field.field.node.movie.field_poster_path
     - field.field.node.movie.field_production_companies
     - field.field.node.movie.field_recommendations
     - field.field.node.movie.field_release_date
@@ -24,6 +24,7 @@ dependencies:
     - node.type.movie
   module:
     - datetime
+    - imdb
     - media_library
     - paragraphs
 id: node.movie.default
@@ -119,19 +120,21 @@ content:
     third_party_settings: {  }
     type: string_textarea
     region: content
-  field_poster:
-    weight: 4
-    settings:
-      media_types: {  }
+  field_poster_path:
+    weight: 27
+    settings: {  }
     third_party_settings: {  }
-    type: media_library_widget
+    type: tmdb_image_textfield
     region: content
   field_production_companies:
-    type: media_library_widget
-    weight: 8
+    weight: 28
     settings:
-      media_types: {  }
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
   field_recommendations:
     weight: 15

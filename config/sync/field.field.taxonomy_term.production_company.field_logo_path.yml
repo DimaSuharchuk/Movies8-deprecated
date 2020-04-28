@@ -1,0 +1,23 @@
+uuid: 6b5294bf-aaca-4376-ba0b-045b4e59f724
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_logo_path
+    - taxonomy.vocabulary.production_company
+  module:
+    - imdb
+id: taxonomy_term.production_company.field_logo_path
+field_name: field_logo_path
+entity_type: taxonomy_term
+bundle: production_company
+label: 'Logo path'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image

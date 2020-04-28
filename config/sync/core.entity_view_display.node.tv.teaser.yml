@@ -17,7 +17,7 @@ dependencies:
     - field.field.node.tv.field_number_of_seasons
     - field.field.node.tv.field_original_title
     - field.field.node.tv.field_overview
-    - field.field.node.tv.field_poster
+    - field.field.node.tv.field_poster_path
     - field.field.node.tv.field_production_companies
     - field.field.node.tv.field_recommendations
     - field.field.node.tv.field_runtime
@@ -53,7 +53,7 @@ hidden:
   field_number_of_seasons: true
   field_original_title: true
   field_overview: true
-  field_poster: true
+  field_poster_path: true
   field_production_companies: true
   field_recommendations: true
   field_runtime: true

@@ -1,0 +1,19 @@
+uuid: f36b1d86-09a2-48e0-9d26-f3bbab1fecce
+langcode: en
+status: true
+dependencies:
+  module:
+    - imdb
+    - taxonomy
+id: taxonomy_term.field_poster_path
+field_name: field_poster_path
+entity_type: taxonomy_term
+type: tmdb_image
+settings: {  }
+module: imdb
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

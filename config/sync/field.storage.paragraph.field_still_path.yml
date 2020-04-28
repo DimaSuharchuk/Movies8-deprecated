@@ -1,0 +1,19 @@
+uuid: e49ebafd-ca0f-4d0e-a40f-2f748b585f69
+langcode: en
+status: true
+dependencies:
+  module:
+    - imdb
+    - paragraphs
+id: paragraph.field_still_path
+field_name: field_still_path
+entity_type: paragraph
+type: tmdb_image
+settings: {  }
+module: imdb
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

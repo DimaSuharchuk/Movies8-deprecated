@@ -1,16 +1,16 @@
-uuid: 803afd92-52be-45c4-8490-960950eb2934
+uuid: 9ee995dd-24b1-4fd9-9fd3-11e0dd3f0eed
 langcode: en
 status: true
 dependencies:
   module:
-    - media
     - node
+    - taxonomy
 id: node.field_production_companies
 field_name: field_production_companies
 entity_type: node
 type: entity_reference
 settings:
-  target_type: media
+  target_type: taxonomy_term
 module: core
 locked: false
 cardinality: -1

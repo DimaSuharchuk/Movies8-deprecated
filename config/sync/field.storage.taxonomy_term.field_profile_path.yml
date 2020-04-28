@@ -1,0 +1,19 @@
+uuid: d8de9fdc-b520-4a22-b2e3-93c777b2aa3a
+langcode: en
+status: true
+dependencies:
+  module:
+    - imdb
+    - taxonomy
+id: taxonomy_term.field_profile_path
+field_name: field_profile_path
+entity_type: taxonomy_term
+type: tmdb_image
+settings: {  }
+module: imdb
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

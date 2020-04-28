@@ -1,0 +1,8 @@
+uuid: f9d5875f-5fd6-4fcc-9ac0-6f88b5b6e410
+langcode: en
+status: true
+dependencies: {  }
+name: Network
+vid: network
+description: ''
+weight: 0

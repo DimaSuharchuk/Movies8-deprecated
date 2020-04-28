@@ -1,0 +1,23 @@
+uuid: e6e70c2f-96d3-415f-a93e-72d4d121880c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_poster_path
+    - taxonomy.vocabulary.movie_collection
+  module:
+    - imdb
+id: taxonomy_term.movie_collection.field_poster_path
+field_name: field_poster_path
+entity_type: taxonomy_term
+bundle: movie_collection
+label: 'Poster path'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image

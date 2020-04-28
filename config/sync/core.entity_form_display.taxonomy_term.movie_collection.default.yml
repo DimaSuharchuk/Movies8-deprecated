@@ -3,13 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.taxonomy_term.movie_collection.field_poster_path
     - field.field.taxonomy_term.movie_collection.field_tmdb_id
     - taxonomy.vocabulary.movie_collection
+  module:
+    - imdb
 id: taxonomy_term.movie_collection.default
 targetEntityType: taxonomy_term
 bundle: movie_collection
 mode: default
 content:
+  field_poster_path:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: tmdb_image_textfield
+    region: content
   field_tmdb_id:
     weight: 1
     settings:
@@ -29,7 +38,7 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 2
+    weight: 3
     region: content
     third_party_settings: {  }
 hidden:

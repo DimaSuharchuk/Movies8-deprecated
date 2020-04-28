@@ -1,0 +1,23 @@
+uuid: 0bb24849-b15e-4d06-bb17-0eda3d11fb32
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_tmdb_id
+    - taxonomy.vocabulary.production_company
+id: taxonomy_term.production_company.field_tmdb_id
+field_name: field_tmdb_id
+entity_type: taxonomy_term
+bundle: production_company
+label: 'TMDb ID'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,23 @@
+uuid: 3dbabe04-2ab6-4271-961a-af61124f4c27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_logo_path
+    - taxonomy.vocabulary.network
+  module:
+    - imdb
+id: taxonomy_term.network.field_logo_path
+field_name: field_logo_path
+entity_type: taxonomy_term
+bundle: network
+label: 'Logo path'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image

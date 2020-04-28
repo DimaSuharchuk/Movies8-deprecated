@@ -1,19 +1,19 @@
-uuid: a3a0efd0-a41c-436d-a88a-1e00c78eba28
+uuid: 591ff113-7194-4770-8c28-a46f98f99028
 langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.person.field_profile_path
-    - field.field.taxonomy_term.person.field_tmdb_id
-    - taxonomy.vocabulary.person
+    - field.field.taxonomy_term.production_company.field_logo_path
+    - field.field.taxonomy_term.production_company.field_tmdb_id
+    - taxonomy.vocabulary.production_company
   module:
     - imdb
-id: taxonomy_term.person.default
+id: taxonomy_term.production_company.default
 targetEntityType: taxonomy_term
-bundle: person
+bundle: production_company
 mode: default
 content:
-  field_profile_path:
+  field_logo_path:
     weight: 0
     label: above
     settings: {  }

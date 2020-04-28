@@ -1,0 +1,23 @@
+uuid: b8358b61-8290-47e0-85e1-1a660794ff29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poster_path
+    - node.type.movie
+  module:
+    - imdb
+id: node.movie.field_poster_path
+field_name: field_poster_path
+entity_type: node
+bundle: movie
+label: 'Poster path'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image

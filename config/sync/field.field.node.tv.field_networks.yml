@@ -1,11 +1,11 @@
-uuid: c7a50e25-ddcc-4651-83c0-448b95049acb
+uuid: 266e8b19-4602-4bc0-9c1c-19e353afe60b
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_networks
-    - media.type.network
     - node.type.tv
+    - taxonomy.vocabulary.network
 id: node.tv.field_networks
 field_name: field_networks
 entity_type: node
@@ -17,12 +17,13 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:media'
+  handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
       network: network
     sort:
-      field: _none
+      field: name
+      direction: asc
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

@@ -1,0 +1,8 @@
+uuid: 4956d281-ce11-41ff-8bf2-3b6f31b1699d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Production company'
+vid: production_company
+description: ''
+weight: 0

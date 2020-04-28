@@ -1,0 +1,11 @@
+uuid: 5ed9e803-ed69-4d60-a718-f8424537dec3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.production_company
+id: taxonomy_term.production_company
+target_entity_type_id: taxonomy_term
+target_bundle: production_company
+default_langcode: en
+language_alterable: false

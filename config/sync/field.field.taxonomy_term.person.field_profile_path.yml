@@ -1,0 +1,23 @@
+uuid: a8d1d6c6-b28c-48be-9eae-716012daac73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_profile_path
+    - taxonomy.vocabulary.person
+  module:
+    - imdb
+id: taxonomy_term.person.field_profile_path
+field_name: field_profile_path
+entity_type: taxonomy_term
+bundle: person
+label: 'Profile path'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: tmdb_image
