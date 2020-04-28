@@ -19,10 +19,10 @@ class ParagraphEpisode extends Paragraph {
    *   Number of episode in season.
    * @param CollectionParagraphCast $field_guest_stars
    *   Guest stars who starred in the episode.
-   * @param MediaEpisodeImage $field_image
-   *   Image like a poster for episode.
    * @param string $field_overview
    *   Episode overview.
+   * @param string $field_still_path
+   *   Image like a poster for episode.
    * @param string $field_title
    *   Name of episode.
    * @param int $field_tmdb_id
@@ -34,8 +34,8 @@ class ParagraphEpisode extends Paragraph {
     DateTime $field_air_date,
     int $field_episode_number,
     CollectionParagraphCast $field_guest_stars,
-    ?MediaEpisodeImage $field_image,
     string $field_overview,
+    ?string $field_still_path,
     string $field_title,
     int $field_tmdb_id
   ) {
@@ -44,8 +44,8 @@ class ParagraphEpisode extends Paragraph {
     $this->fields['field_air_date'] = $field_air_date ? $field_air_date->format('Y-m-d') : NULL;
     $this->fields['field_episode_number'] = $field_episode_number;
     $this->fields['field_guest_stars'] = $field_guest_stars;
-    $this->fields['field_image'] = $field_image;
     $this->fields['field_overview'] = $field_overview;
+    $this->fields['field_still_path'] = $field_still_path;
     $this->fields['field_title'] = $field_title;
     $this->fields['field_tmdb_id'] = $field_tmdb_id;
   }

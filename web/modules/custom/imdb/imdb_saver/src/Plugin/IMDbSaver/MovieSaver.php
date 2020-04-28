@@ -35,7 +35,7 @@ class MovieSaver extends IMDbSaverPluginBase {
         $fields['imdb_id'],
         $fields['title'],
         $fields['overview'],
-        $this->extractPoster($item, $fields['title']),
+        $fields['poster_path'],
         $this->extractProductionCompanies($item),
         new DateTime($fields['release_date']),
         $fields['runtime'],

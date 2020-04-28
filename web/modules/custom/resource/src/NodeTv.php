@@ -25,7 +25,7 @@ class NodeTv extends Node {
    *   IMDb ID, like tt12345678.
    * @param bool $field_in_production
    *   Is the TV finished or in production. TRUE = "in production" yet.
-   * @param CollectionMediaNetwork $field_networks
+   * @param CollectionTaxonomyNetwork $field_networks
    *   List of channels TV belongs to.
    * @param int $field_number_of_episodes
    *   Number of all episodes in the TV.
@@ -35,10 +35,10 @@ class NodeTv extends Node {
    *   The TV's title in English.
    * @param string $field_overview
    *   TV show overview.
-   * @param MediaPoster|null $field_poster
+   * @param string $field_poster_path
    *   Poster of TV.
-   * @param CollectionMediaProductionCompany $field_production_companies
-   *   Production companies created the movie.
+   * @param CollectionTaxonomyProductionCompany $field_production_companies
+   *   Production companies created the TV show.
    * @param CollectionParagraphSeason $field_seasons
    *   Reference field of paragraphs "Season" entities.
    * @param int $field_runtime
@@ -61,13 +61,13 @@ class NodeTv extends Node {
     CollectionTaxonomyGenre $field_genres,
     string $field_imdb_id,
     bool $field_in_production,
-    CollectionMediaNetwork $field_networks,
+    CollectionTaxonomyNetwork $field_networks,
     int $field_number_of_episodes,
     int $field_number_of_seasons,
     string $field_original_title,
     string $field_overview,
-    ?MediaPoster $field_poster,
-    CollectionMediaProductionCompany $field_production_companies,
+    string $field_poster_path,
+    CollectionTaxonomyProductionCompany $field_production_companies,
     CollectionParagraphSeason $field_seasons,
     int $field_runtime,
     string $field_site,
@@ -88,7 +88,7 @@ class NodeTv extends Node {
     $this->fields['field_number_of_seasons'] = $field_number_of_seasons;
     $this->fields['field_original_title'] = $field_original_title;
     $this->fields['field_overview'] = $field_overview;
-    $this->fields['field_poster'] = $field_poster;
+    $this->fields['field_poster_path'] = $field_poster_path;
     $this->fields['field_production_companies'] = $field_production_companies;
     $this->fields['field_seasons'] = $field_seasons;
     $this->fields['field_runtime'] = $field_runtime;

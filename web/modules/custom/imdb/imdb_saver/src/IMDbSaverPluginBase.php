@@ -6,27 +6,23 @@ use Drupal;
 use Drupal\Component\Plugin\PluginBase;
 use Drupal\imdb\IMDbQueueItem;
 use Drupal\imdb\IMDbQueueItemLanguage;
-use Drupal\resource\CollectionMediaNetwork;
-use Drupal\resource\CollectionMediaProductionCompany;
 use Drupal\resource\CollectionMediaTrailer;
 use Drupal\resource\CollectionParagraphCast;
 use Drupal\resource\CollectionParagraphCrew;
 use Drupal\resource\CollectionParagraphSeason;
 use Drupal\resource\CollectionTaxonomyGenre;
+use Drupal\resource\CollectionTaxonomyNetwork;
 use Drupal\resource\CollectionTaxonomyPerson;
-use Drupal\resource\FileImageTMDb;
-use Drupal\resource\MediaEpisodeImage;
-use Drupal\resource\MediaNetwork;
-use Drupal\resource\MediaPoster;
-use Drupal\resource\MediaProductionCompany;
-use Drupal\resource\MediaProfile;
+use Drupal\resource\CollectionTaxonomyProductionCompany;
 use Drupal\resource\MediaTrailer;
 use Drupal\resource\ParagraphCast;
 use Drupal\resource\ParagraphCrew;
 use Drupal\resource\ParagraphSeason;
 use Drupal\resource\TaxonomyGenre;
 use Drupal\resource\TaxonomyMovieCollection;
+use Drupal\resource\TaxonomyNetwork;
 use Drupal\resource\TaxonomyPerson;
+use Drupal\resource\TaxonomyProductionCompany;
 
 abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterface {
 
@@ -63,17 +59,10 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
   protected function extractPerson(array $person): TaxonomyPerson {
-    $profile_media = NULL;
-    if ($person['profile_path']) {
-      $profile_media = (new MediaProfile(
-        new FileImageTMDb($person['profile_path'], 500)
-      ))->setImageAttributes($person['name']);
-    }
-
     return new TaxonomyPerson(
       $person['name'],
       $person['id'],
-      $profile_media
+      $person['profile_path']
     );
   }
 
@@ -128,19 +117,20 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
    *
    * @param \Drupal\imdb\IMDbQueueItem $item
    *
-   * @return \Drupal\resource\CollectionMediaProductionCompany
+   * @return \Drupal\resource\CollectionTaxonomyProductionCompany
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
-  protected function extractProductionCompanies(IMDbQueueItem $item): CollectionMediaProductionCompany {
-    $production_companies_collection = new CollectionMediaProductionCompany();
+  protected function extractProductionCompanies(IMDbQueueItem $item): CollectionTaxonomyProductionCompany {
+    $production_companies_collection = new CollectionTaxonomyProductionCompany();
 
     foreach ($item->getFieldsData()['production_companies'] as $production_company) {
       if ($production_company['logo_path']) {
         $production_companies_collection
-          ->add((new MediaProductionCompany(
+          ->add(new TaxonomyProductionCompany(
+            $production_company['name'],
             $production_company['id'],
-            new FileImageTMDb($production_company['logo_path'], 200)
-          ))->setImageAttributes($production_company['name']));
+            $production_company['logo_path']
+          ));
       }
     }
 
@@ -221,19 +211,20 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
    *
    * @param \Drupal\imdb\IMDbQueueItem $item
    *
-   * @return \Drupal\resource\CollectionMediaNetwork
+   * @return \Drupal\resource\CollectionTaxonomyNetwork
    * @throws \Drupal\Component\Plugin\Exception\PluginException
    */
-  protected function extractNetworks(IMDbQueueItem $item): CollectionMediaNetwork {
-    $networks_collection = new CollectionMediaNetwork();
+  protected function extractNetworks(IMDbQueueItem $item): CollectionTaxonomyNetwork {
+    $networks_collection = new CollectionTaxonomyNetwork();
 
     foreach ($item->getFieldsData()['networks'] as $network) {
       if ($network['logo_path']) {
         $networks_collection
-          ->add((new MediaNetwork(
+          ->add(new TaxonomyNetwork(
+            $network['name'],
             $network['id'],
-            new FileImageTMDb($network['logo_path'], 200)
-          ))->setImageAttributes($network['name']));
+            $network['logo_path']
+          ));
       }
     }
 
@@ -255,7 +246,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
       $seasons_collection->add(new ParagraphSeason(
         $season['episode_count'],
         $season['overview'],
-        $this->createPosterFromPath($season['poster_path'], $season['name']),
+        $season['poster_path'],
         $season['season_number'],
         $season['name'],
         $season['id']
@@ -263,23 +254,6 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
     }
 
     return $seasons_collection;
-  }
-
-  /**
-   * Create poster entity from TMDb image name.
-   *
-   * @param string $remote_image_path
-   *   TMDb poster's path from response, only end of image path.
-   * @param string $title
-   *   This text will be set as alt and title attributes of image.
-   *
-   * @return \Drupal\resource\MediaPoster|null
-   * @throws \Drupal\Component\Plugin\Exception\PluginException
-   */
-  private function createPosterFromPath(?string $remote_image_path, string $title): ?MediaPoster {
-    return $remote_image_path ? (new MediaPoster(
-      new FileImageTMDb($remote_image_path, 400)
-    ))->setImageAttributes($title) : NULL;
   }
 
   /**
@@ -306,35 +280,6 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
   }
 
   /**
-   * Create "Episode image" entity from TMDb response.
-   *
-   * @param string|null $remote_image_path
-   * @param string $title
-   *
-   * @return \Drupal\resource\MediaEpisodeImage|null
-   * @throws \Drupal\Component\Plugin\Exception\PluginException
-   */
-  protected function extractEpisodeImage(?string $remote_image_path, string $title): ?MediaEpisodeImage {
-    return $remote_image_path ? (new MediaEpisodeImage(
-      new FileImageTMDb($remote_image_path, 500)
-    ))->setImageAttributes($title) : NULL;
-  }
-
-  /**
-   * Create poster entity from TMDb response.
-   *
-   * @param \Drupal\imdb\IMDbQueueItem $item
-   * @param string $title
-   *   This text will be set as alt and title attributes of image.
-   *
-   * @return \Drupal\resource\MediaPoster|null
-   * @throws \Drupal\Component\Plugin\Exception\PluginException
-   */
-  protected function extractPoster(IMDbQueueItem $item, string $title): ?MediaPoster {
-    return $this->createPosterFromPath($item->getFieldsData()['poster_path'], $title);
-  }
-
-  /**
    * Helper method calculate average runtime.
    *
    * @param \Drupal\imdb\IMDbQueueItem $item
@@ -350,6 +295,7 @@ abstract class IMDbSaverPluginBase extends PluginBase implements IMDbSaverInterf
 
     return 0;
   }
+
 
   /**
    * Create queue for update "field_recommended" and "field_similar" for movie

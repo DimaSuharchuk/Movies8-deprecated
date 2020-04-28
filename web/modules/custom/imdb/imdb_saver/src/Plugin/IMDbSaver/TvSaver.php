@@ -38,7 +38,7 @@ class TvSaver extends IMDbSaverPluginBase {
         $fields['number_of_seasons'],
         $fields['name'],
         $fields['overview'],
-        $this->extractPoster($item, $fields['name']),
+        $fields['poster_path'],
         $this->extractProductionCompanies($item),
         $this->extractSeasons($item),
         $this->extractEpisodeRuntime($item),

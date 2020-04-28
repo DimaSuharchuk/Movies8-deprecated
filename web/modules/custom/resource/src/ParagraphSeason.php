@@ -15,7 +15,7 @@ class ParagraphSeason extends Paragraph {
    *   Count of episodes in season.
    * @param string $field_overview
    *   Season overview.
-   * @param MediaPoster $field_poster
+   * @param string $field_poster
    *   Poster of season.
    * @param int $field_season_number
    *   Number of TV season.
@@ -29,7 +29,7 @@ class ParagraphSeason extends Paragraph {
   public function __construct(
     int $field_episode_count,
     string $field_overview,
-    ?MediaPoster $field_poster,
+    ?string $field_poster_path,
     int $field_season_number,
     string $field_title,
     int $field_tmdb_id
@@ -38,7 +38,7 @@ class ParagraphSeason extends Paragraph {
 
     $this->fields['field_episode_count'] = $field_episode_count;
     $this->fields['field_overview'] = $field_overview;
-    $this->fields['field_poster'] = $field_poster;
+    $this->fields['field_poster_path'] = $field_poster_path;
     $this->fields['field_season_number'] = $field_season_number;
     $this->fields['field_title'] = $field_title;
     $this->fields['field_tmdb_id'] = $field_tmdb_id;

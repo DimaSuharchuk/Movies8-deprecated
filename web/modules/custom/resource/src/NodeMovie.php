@@ -29,9 +29,9 @@ class NodeMovie extends Node {
    *   The movie's title in English.
    * @param string $field_overview
    *   Movie overview.
-   * @param \Drupal\resource\MediaPoster $field_poster
+   * @param string $field_poster_path
    *   Poster of movie.
-   * @param \Drupal\resource\CollectionMediaProductionCompany $field_production_companies
+   * @param \Drupal\resource\CollectionTaxonomyProductionCompany $field_production_companies
    *   Production companies created the movie.
    * @param \DateTime $field_release_date
    *   Date when the movie saw the world.
@@ -56,8 +56,8 @@ class NodeMovie extends Node {
     string $field_imdb_id,
     string $field_original_title,
     string $field_overview,
-    ?MediaPoster $field_poster,
-    CollectionMediaProductionCompany $field_production_companies,
+    string $field_poster_path,
+    CollectionTaxonomyProductionCompany $field_production_companies,
     DateTime $field_release_date,
     int $field_runtime,
     string $field_site,
@@ -74,7 +74,7 @@ class NodeMovie extends Node {
     $this->fields['field_imdb_id'] = $field_imdb_id;
     $this->fields['field_original_title'] = $field_original_title;
     $this->fields['field_overview'] = $field_overview;
-    $this->fields['field_poster'] = $field_poster;
+    $this->fields['field_poster_path'] = $field_poster_path;
     $this->fields['field_production_companies'] = $field_production_companies;
     $this->fields['field_release_date'] = $field_release_date ? $field_release_date->format('Y-m-d') : NULL;
     $this->fields['field_runtime'] = $field_runtime;

@@ -47,8 +47,8 @@ class EpisodeSaver extends IMDbSaverPluginBase {
         new DateTime($episode_fields['air_date']),
         $episode_fields['episode_number'],
         $this->extractGuestStars($episode_fields),
-        $this->extractEpisodeImage($episode_fields['still_path'], $episode_fields['name']),
         $episode_fields['overview'],
+        $episode_fields['still_path'],
         $episode_fields['name'],
         $episode_fields['id']
       );
